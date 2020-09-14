@@ -1,17 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Route, BrowserRouter} from "react-router-dom";
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import './index.css';
+import {Provider} from 'react-redux'
+import { CookiesProvider } from 'react-cookie';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import saga from './store/sagas'
+import {configureStore} from './store'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
+
+
+const store = configureStore();
+store.runSaga(saga);
+
+
+
+const render = () => {
+  
+    ReactDOM.render(
+        <React.StrictMode>
+  
+          <BrowserRouter>
+          
+            <CookiesProvider>
+              <Provider store={store}>
+              
+                <Route path="/" component={App} /> 
+                
+              </Provider>
+            </CookiesProvider>
+          
+          </BrowserRouter>
+        
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+};
+
+
+
+store.subscribe(render);
+
+render();
