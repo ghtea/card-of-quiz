@@ -19,9 +19,12 @@ export const Div_Title = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   
   @media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
+  	
+  	width: 150px;
+  	margin-left: 15px;
   	
 	  display: flex;
 	  flex-direction: row;
@@ -36,3 +39,11 @@ export const Div_Title = styled.div`
 	}
 `
 
+
+export const Div_TitleText = styled.div`
+  
+  margin-left: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  
+`

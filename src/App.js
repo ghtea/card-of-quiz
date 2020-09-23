@@ -5,7 +5,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 import {useSelector, useDispatch} from "react-redux";
-import Immutable from 'immutable';
+import Immutable, {toJS} from 'immutable';
 
 import * as config from './config';
 //import replaceTheme from "./redux/thunks/replaceTheme";
@@ -20,9 +20,10 @@ import * as config from './config';
 //import Loading from "./components/_/Loading";
 import Home from "./routes/Home";
 import Nav from "./routes/Nav";
+import Color from "./routes/Color";
 
 //import addDeleteNotification from "./redux/thunks/addDeleteNotification";
-import * as colorScheme from "./store/actions/colorScheme";
+import * as colorAssignment from "./store/actions/colorAssignment";
 //import {replaceDataAuth, replaceData2Auth} from "./redux/actions/auth";
 
 
@@ -44,7 +45,7 @@ function App({
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch( colorScheme.return_GET_LIST_COLOR_SCHEME() );
+    dispatch( colorAssignment.return_GET_LIST_COLOR_ASSIGNMENT() );
   }, [])
   
   return (
@@ -65,10 +66,10 @@ function App({
       <Div_Content className='Div_Content'>
       
         
-          <Switch >
+        <Switch >
           
           <Route path="/" exact={true} component={Home} />
-          
+          <Route path="/color" component={Color} />
           
         </Switch >
         

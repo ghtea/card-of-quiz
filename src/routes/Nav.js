@@ -5,7 +5,7 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
 import Title from '../components/Nav/Title';
-import NavItems from '../components/Nav/NavItems';
+import NavGroup from '../components/Nav/NavGroup';
 import Bonus from '../components/Nav/Bonus';
 
 import { Div_Nav} from './Nav_Styled'
@@ -26,7 +26,7 @@ const Nav = ({
   <Div_Nav>
   	
   	<Title/>
-  	<NavItems/>
+  	<NavGroup/>
   	<Bonus/>
 		
 	</Div_Nav>

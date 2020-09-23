@@ -2,33 +2,35 @@ import {handleActions} from 'redux-actions';
 import Immutable, { Map, List, fromJS } from 'immutable';
 
 import * as colorAssignment from '../actions/colorAssignment';
-import * as theme from '../actions/theme';
 
-
-import defaultUsingTheme from './theme/defaultUsingTheme'
-// import {CALL_DATA, CALL_DATA_SUCCESS, CALL_DATA_FAIL} from '../actions/theme'
-
-
+//import defaultUsingColorAssignment from '../../styles/defaultUsingColorAssignment'
 
 
 
 
 
 const stateInitial = Map({
-  usingTheme: fromJS(defaultUsingTheme)
+  listColorAssignment: List([])
 });
 
 
 
 
-const themeReducer = handleActions({
-    
-    
 
-  [theme.REPLACE_THEME]: (state, action) => {
-    console.log('reducer')
+const colorAssignmentReducer = handleActions({
+  
+  
+  
+  [colorAssignment.GET_LIST_COLOR_ASSIGNMENT]: (state, action) => {
+    return state;
+  },
+
+  
+  
+  [colorAssignment.REPLACE_COLOR_ASSIGNMENT]: (state, action) => {
+    console.log('hiiii');
+    
     const location = action['payload']['location'] || [];
-    console.log(action.payload.replacement)
     
     if (!location || location.length === 0) {
       return state;
@@ -37,10 +39,10 @@ const themeReducer = handleActions({
       return state.setIn(location, Immutable.fromJS(action['payload']['replacement']) );
     }
     
-    
-  }
+  },
+  
   
 }, stateInitial);
 
 
-export default themeReducer;
+export default colorAssignmentReducer;

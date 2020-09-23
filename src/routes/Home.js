@@ -31,7 +31,7 @@ function Home({
   
 }) {
   
-  const listColorScheme = useSelector( state => state.colorScheme.get('listColorScheme'), [] );
+  const listColorAssignment = useSelector( state => state.colorAssignment.get('listColorAssignment'), [] );
   
   const dispatch = useDispatch();
   
@@ -40,16 +40,16 @@ function Home({
   }, [])
   
   
-  const onClick_ChangeColorScheme = useCallback(
+  const onClick_ChangeColorAssignment = useCallback(
     (event) => {
-      //console.log(listColorScheme);
+      //console.log(listColorAssignment);
       
       dispatch( theme.return_REPLACE_THEME({
-        location: ['usingTheme', 'colorScheme']
-        , replacement: listColorScheme.getIn([0])
+        location: ['usingTheme', 'colorAssignment']
+        , replacement: listColorAssignment.getIn([0])
       }) )
     },
-    [listColorScheme]
+    [listColorAssignment]
   );
   
   
@@ -57,7 +57,7 @@ function Home({
     
     <Div_Home>
       <div>
-        <button onClick={(event) => onClick_ChangeColorScheme(event)} > change color scheme </button>
+        <button onClick={(event) => onClick_ChangeColorAssignment(event)} > change color assignment </button>
       </div>
     </Div_Home>
     

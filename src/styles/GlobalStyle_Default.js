@@ -5,6 +5,9 @@ import styled, {createGlobalStyle} from 'styled-components';
 const GlobalStyle_Default = createGlobalStyle`
   
   body {
+    font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
+    font-size: 16px;
+    
     background-color: ${
       props => `hsl(
         ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 0])}, 
@@ -110,6 +113,67 @@ const GlobalStyle_Default = createGlobalStyle`
   
     box-sizing: border-box;
       
+  }
+  
+  
+  input {
+    width: 100%;
+    height: 2.4rem;
+    
+    
+    background-color: ${
+      props => `hsl(
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+      `
+    };
+    
+    color: ${
+      props => `hsl(
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+      `
+    };
+    
+    
+    font-size: 1rem;
+    
+    
+    
+    box-sizing: border-box;
+    
+    &::placeholder {
+      color: ${
+        props => `hsl(
+          ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 0])}, 
+          ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 1])}%, 
+          ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 2])}%)
+        `
+      };
+    }
+    
+    border-radius: 4px;
+    border: 2px solid ${
+      props => `hsl(
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 2])}%)
+      `
+    };
+      
+    &:focus, &:active {
+     outline: none;
+     border: 2px solid ${
+      props => `hsl(
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+      `
+      };
+    }
+    
   }
 `
 

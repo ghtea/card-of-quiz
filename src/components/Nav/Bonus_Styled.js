@@ -22,7 +22,8 @@ export const Div_Bonus = styled.div`
 
   
   @media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
-  	
+  	width: 150px;
+  	margin-right: 15px;
 	}
 	
 	& > div {

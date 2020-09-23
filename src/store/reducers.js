@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
 
 
-import colorSchemeReducer from './reducers/colorScheme';
+import colorAssignmentReducer from './reducers/colorAssignment';
+import colorReducer from './reducers/color';
 import themeReducer from './reducers/theme';
 
 const rootReducer = combineReducers({
-  colorScheme: colorSchemeReducer,
+  colorAssignment: colorAssignmentReducer,
+  color: colorReducer,
   theme: themeReducer
 });
 

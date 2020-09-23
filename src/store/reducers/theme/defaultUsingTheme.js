@@ -1,7 +1,5 @@
+import defaultColorAssignment from './defaultUsingTheme/defaultColorAssignment'
 
-import defaultColorScheme from './defaultUsingTheme/defaultColorScheme'
-
-console.log(defaultColorScheme);
 
  const defaultUsingTheme = {
     
@@ -11,7 +9,7 @@ console.log(defaultColorScheme);
   , title: "default"
   
   
-  , colorScheme: defaultColorScheme
+  , colorAssignment: defaultColorAssignment
   
   
   , media: {
