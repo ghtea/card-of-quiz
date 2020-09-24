@@ -38,7 +38,7 @@ const Title = ({
   >
   	
   	<div> <IconHatWizard width={'30px'} height={'30px'} roleColor={'basic'} phaseColor={'70'} /> </div>
-  	<Div_TitleText> W Design </Div_TitleText>
+  	<Div_TitleText> Card of Quiz </Div_TitleText>
 		
 	</Div_Title>
 	

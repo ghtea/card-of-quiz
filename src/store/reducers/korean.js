@@ -1,34 +1,34 @@
 import {handleActions} from 'redux-actions';
 import Immutable, { Map, List, fromJS } from 'immutable';
 
-import * as colorScheme from '../actions/colorScheme';
+import * as korean from '../actions/korean';
 
-//import defaultUsingColorScheme from '../../styles/defaultUsingColorScheme'
-
-
+//import defaultUsingColorAssignment from '../../styles/defaultUsingColorAssignment'
 
 
 
-const stateInitial = Map({
-  listColorScheme: List([])
+
+
+const stateInitial = fromJS({
+  deckFocused: {}
 });
 
 
 
 
 
-const colorSchemeReducer = handleActions({
+const koreanReducer = handleActions({
   
   
   
-  [colorScheme.GET_LIST_COLOR_SCHEME]: (state, action) => {
+  [korean.GET_LIST_KOREAN]: (state, action) => {
     return state;
   },
 
   
   
-  [colorScheme.REPLACE_COLOR_SCHEME]: (state, action) => {
-    console.log('hiiii');
+  [korean.REPLACE_KOREAN]: (state, action) => {
+    //console.log('hiiii');
     
     const location = action['payload']['location'] || [];
     
@@ -45,4 +45,4 @@ const colorSchemeReducer = handleActions({
 }, stateInitial);
 
 
-export default colorSchemeReducer;
+export default koreanReducer;

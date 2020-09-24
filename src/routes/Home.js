@@ -57,7 +57,7 @@ function Home({
     
     <Div_Home>
       <div>
-        <button onClick={(event) => onClick_ChangeColorAssignment(event)} > change color assignment </button>
+        Hello Jia
       </div>
     </Div_Home>
     

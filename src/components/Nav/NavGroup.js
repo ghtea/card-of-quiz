@@ -82,52 +82,29 @@ const NavGroup = ({
 		<Div_NavGroup>
 			
 			<Div_NavGroupItem
-				onMouseEnter ={(event)=> onMouseEnter_NavGroupItemTitle(event, 'Color') }
+				onMouseEnter ={(event)=> onMouseEnter_NavGroupItemTitle(event, 'Korean') }
         onMouseLeave ={(event)=> onMouseLeave_NavGroupItemTitle(event, "") }
 			>
 			
 				<Div_NavGroupItemTitle 
-          onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Color') }
+          onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Korean') }
 				> 
-					Color 
+					Korean 
 				</Div_NavGroupItemTitle>
 				
 					<Div_NavGroupItemPopup
-						spotlighted={idSpotlighted==="Color"}
+						spotlighted={idSpotlighted==="Korean"}
 					> 
-						<Div_Triangle lengthBasic={12} onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Color') } /> 
+						<Div_Triangle lengthBasic={12} onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Korean') } /> 
 						<Div_Reactangle>
-							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/color/basic')}> basic </Div_NavLink>
-							<Div_NavLink> series </Div_NavLink>
-							<Div_NavLink> theme </Div_NavLink>
+							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/1')}> 1 </Div_NavLink>
+							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/2')}> 2 </Div_NavLink>
+							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/3')}> 3 </Div_NavLink>
 						</Div_Reactangle>
 					</Div_NavGroupItemPopup>
 				
 			</Div_NavGroupItem>
 			
-			
-			
-			<Div_NavGroupItem
-				onMouseEnter ={(event)=> onMouseEnter_NavGroupItemTitle(event, 'Design') }
-        onMouseLeave ={(event)=> onMouseLeave_NavGroupItemTitle(event, "") }
-			>
-				<Div_NavGroupItemTitle
-					onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Design') }
-				> Design </Div_NavGroupItemTitle>
-				
-					<Div_NavGroupItemPopup
-						spotlighted={idSpotlighted==="Design"}
-					> 
-						<Div_Triangle lengthBasic={12} onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Design') } /> 
-						<Div_Reactangle>
-							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/design/basic')}> basic </Div_NavLink>
-							<Div_NavLink> medium </Div_NavLink>
-							<Div_NavLink> big </Div_NavLink>
-							<Div_NavLink> page </Div_NavLink>
-						</Div_Reactangle>
-					</Div_NavGroupItemPopup>
-				
-			</Div_NavGroupItem>
 
 		</Div_NavGroup>
 

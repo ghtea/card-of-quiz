@@ -20,10 +20,10 @@ import * as config from './config';
 //import Loading from "./components/_/Loading";
 import Home from "./routes/Home";
 import Nav from "./routes/Nav";
-import Color from "./routes/Color";
+import Korean from "./routes/Korean";
 
 //import addDeleteNotification from "./redux/thunks/addDeleteNotification";
-import * as colorAssignment from "./store/actions/colorAssignment";
+import * as korean from "./store/actions/korean";
 //import {replaceDataAuth, replaceData2Auth} from "./redux/actions/auth";
 
 
@@ -45,7 +45,7 @@ function App({
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch( colorAssignment.return_GET_LIST_COLOR_ASSIGNMENT() );
+    dispatch( korean.return_GET_DECK_KOREAN() );
   }, [])
   
   return (

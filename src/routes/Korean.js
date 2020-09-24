@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import * as config from '../config';
 
-import Basic from "../components/Color/Basic"
+import Stage1 from "../components/Korean/Stage1"
 //import Heroes from "../components/Player/Heroes"
 
 import {useSelector, useDispatch} from "react-redux";
@@ -18,7 +18,7 @@ import Immutable from 'immutable';
 
 
 
-const Color = ({
+const Korean = ({
   
 }) => {
   
@@ -27,8 +27,7 @@ const Color = ({
 
     <Switch>
     
-      <Route path="/color/basic" component={Basic} />
-      
+      <Route path="/korean/stage1" component={Stage1} />
       
     </Switch>
     

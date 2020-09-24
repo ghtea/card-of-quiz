@@ -27,7 +27,6 @@ const Bonus = ({
   <Div_Bonus>
   	
   	<div> 2020. 9. </div>
-  	<div> Updated </div>
 		
 	</Div_Bonus>
 	
