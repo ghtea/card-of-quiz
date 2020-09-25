@@ -9,7 +9,7 @@ import defaultColorAssignment from './defaultUsingTheme/defaultColorAssignment'
   , title: "default"
   
   
-  , colorAssignment: defaultColorAssignment
+  , colorAssignment: defaultColorAssignment['assignment']
   
   
   , media: {

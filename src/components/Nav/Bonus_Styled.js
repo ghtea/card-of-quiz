@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import Immutable from 'immutable';
 
 
 export const Div_Bonus = styled.div`
@@ -9,9 +9,9 @@ export const Div_Bonus = styled.div`
   
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '20', 0])}, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '20', 1])}%, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '20', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 2])}%)
     `
   };
   

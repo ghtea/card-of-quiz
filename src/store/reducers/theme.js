@@ -1,7 +1,7 @@
 import {handleActions} from 'redux-actions';
 import Immutable, { Map, List, fromJS } from 'immutable';
 
-import * as colorAssignment from '../actions/colorAssignment';
+import * as korean from '../actions/korean';
 import * as theme from '../actions/theme';
 
 

@@ -10,7 +10,7 @@ import * as korean from '../actions/korean';
 
 
 const stateInitial = fromJS({
-  deckFocused: {}
+  listCardFocused: []
 });
 
 
@@ -21,7 +21,7 @@ const koreanReducer = handleActions({
   
   
   
-  [korean.GET_LIST_KOREAN]: (state, action) => {
+  [korean.GET_LIST_CARD_KOREAN]: (state, action) => {
     return state;
   },
 

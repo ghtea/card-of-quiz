@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import * as config from '../config';
 
-import Stage1 from "../components/Korean/Stage1"
+import ListCard from "../components/_/ListCard"
 //import Heroes from "../components/Player/Heroes"
 
 import {useSelector, useDispatch} from "react-redux";
@@ -27,7 +27,7 @@ const Korean = ({
 
     <Switch>
     
-      <Route path="/korean/stage1" component={Stage1} />
+      <Route path="/korean/stage1" component={ListCard} />
       
     </Switch>
     
@@ -40,5 +40,5 @@ const Korean = ({
 
 
 
-export default Color;
+export default Korean;
 

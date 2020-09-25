@@ -41,11 +41,11 @@ function App({
 }) {
   
   const usingTheme = useSelector( state => state.theme.get('usingTheme'), [] );
-  
+  console.log(usingTheme.toJS());
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch( korean.return_GET_DECK_KOREAN() );
+    dispatch( korean.return_GET_LIST_CARD_KOREAN() );
   }, [])
   
   return (
@@ -69,7 +69,7 @@ function App({
         <Switch >
           
           <Route path="/" exact={true} component={Home} />
-          <Route path="/color" component={Color} />
+          <Route path="/korea" component={Korean} />
           
         </Switch >
         

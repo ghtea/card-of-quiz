@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Immutable from 'immutable';
 
 
 export const Div_Nav = styled.div`
@@ -8,24 +9,24 @@ export const Div_Nav = styled.div`
   
   border-bottom: 1px solid ${
   	props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'color', 'main', '70', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'main', '70', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'main', '70', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'main', '70', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'main', '70', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'main', '70', 2])}%)
     `
   };
   
   background-color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'color', 'main', '60', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'main', '60', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'main', '60', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'main', '60', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'main', '60', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'main', '60', 2])}%)
     `
   };
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', '20', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', '20', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', '20', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 2])}%)
     `
   };
   
@@ -76,9 +77,9 @@ export const Div_Nav_Title = styled.div`
   
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', 'white', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', 'white', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', 'white', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%)
     `
   };
   
@@ -112,9 +113,9 @@ export const Div_Nav_Items = styled.div`
   
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', '20', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', '20', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'color', 'basic', '20', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 2])}%)
     `
   };
   

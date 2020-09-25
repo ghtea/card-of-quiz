@@ -31,7 +31,7 @@ function Home({
   
 }) {
   
-  const listColorAssignment = useSelector( state => state.colorAssignment.get('listColorAssignment'), [] );
+  //const listColorAssignment = useSelector( state => state.colorAssignment.get('listColorAssignment'), [] );
   
   const dispatch = useDispatch();
   
@@ -39,7 +39,7 @@ function Home({
     
   }, [])
   
-  
+  /*
   const onClick_ChangeColorAssignment = useCallback(
     (event) => {
       //console.log(listColorAssignment);
@@ -51,7 +51,7 @@ function Home({
     },
     [listColorAssignment]
   );
-  
+  */
   
   return (
     

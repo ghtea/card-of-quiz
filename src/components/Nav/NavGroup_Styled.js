@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import Immutable from 'immutable';
 
 
 export const Div_NavGroup = styled.div`
@@ -10,9 +10,9 @@ export const Div_NavGroup = styled.div`
   
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '20', 0])}, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '20', 1])}%, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '20', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '20', 2])}%)
     `
   };
   
@@ -115,9 +115,9 @@ export const Div_Triangle = styled.div`
     height: ${props=>props.lengthBasic}px;
     background: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%)
       `
     };
     transform: rotate(45deg); /* Prefixes... */
@@ -154,16 +154,16 @@ export const Div_NavLink = styled.div`
   
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '60', 0])}, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '60', 1])}%, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', '60', 2])}%)
+      ${props.theme.getIn(['colorAssignment','basic', '60', 0])}, 
+      ${props.theme.getIn(['colorAssignment','basic', '60', 1])}%, 
+      ${props.theme.getIn(['colorAssignment','basic', '60', 2])}%)
     `
   };
   background-color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
-      ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+      ${props.theme.getIn(['colorAssignment','basic', 'white', 0])}, 
+      ${props.theme.getIn(['colorAssignment','basic', 'white', 1])}%, 
+      ${props.theme.getIn(['colorAssignment','basic', 'white', 2])}%)
     `
   };
   
@@ -171,16 +171,16 @@ export const Div_NavLink = styled.div`
   
     color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+        ${props.theme.getIn(['colorAssignment','basic', '70', 0])}, 
+        ${props.theme.getIn(['colorAssignment','basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorAssignment','basic', '70', 2])}%)
       `
     };
     background-color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 2])}%)
+        ${props.theme.getIn(['colorAssignment','basic', '10', 0])}, 
+        ${props.theme.getIn(['colorAssignment','basic', '10', 1])}%, 
+        ${props.theme.getIn(['colorAssignment','basic', '10', 2])}%)
       `
     };
   }
@@ -197,9 +197,9 @@ export const Div_NavLink = styled.div`
     border-right: 8px solid transparent;
     border-bottom: 8px solid ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+        ${props.theme.getIn(['colorScheme', 'colorAssignment','basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorScheme', 'colorAssignment','basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorScheme', 'colorAssignment','basic', 'white', 2])}%)
       `
     };
     box-shadow: 0px -6px 6px 6px rgba(0, 0, 0, 0.5); 

@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import Immutable from 'immutable';
 
-export const Div_Content = styled.div
+export const Div_ListCard = styled.div
 `
-  
-  opacity: ${props=> (props.visibilityReaction === "visible")? "0.3" : "1.0"  };
   
   width: 100%;
   height: auto;

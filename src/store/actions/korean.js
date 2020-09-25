@@ -10,12 +10,12 @@ export const return_REPLACE_KOREAN = (payload) => {
 
 
 //
-export const GET_CARD_KOREAN = 'GET_CARD_KOREAN';
+export const GET_LIST_CARD_KOREAN = 'GET_LIST_CARD_KOREAN';
 
 
-export const return_GET_CARD_KOREAN = (payload) => {
+export const return_GET_LIST_CARD_KOREAN = (payload) => {
     return {
-        type: GET_CARD_KOREAN,
+        type: GET_LIST_CARD_KOREAN,
         payload: payload
     }
 };

@@ -9,7 +9,7 @@ import getListCardKorean from './korean/getListCardKorean';
 
 
 export default function* koreanSaga() {
-    yield takeEvery( korean.GET_LIST_COLOR_ASSIGNMENT, getListColorAssignment );
+    yield takeEvery( korean.GET_LIST_CARD_KOREAN, getListCardKorean );
 }
 
 

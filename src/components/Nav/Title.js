@@ -37,7 +37,6 @@ const Title = ({
   	onClick={(event)=>onClick_Title(event, '/')}
   >
   	
-  	<div> <IconHatWizard width={'30px'} height={'30px'} roleColor={'basic'} phaseColor={'70'} /> </div>
   	<Div_TitleText> Card of Quiz </Div_TitleText>
 		
 	</Div_Title>
@@ -47,3 +46,5 @@ const Title = ({
 
 
 export default Title;
+
+// <div> <IconHatWizard width={'30px'} height={'30px'} roleColor={'basic'} phaseColor={'70'} /> </div>
