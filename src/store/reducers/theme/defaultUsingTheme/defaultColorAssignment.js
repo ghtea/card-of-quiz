@@ -15,7 +15,7 @@ const defaultColorAssignment = {
     // ex: [ [10,10,10], [10,10,10], [10,10,10], ...   ] 총 9개
     basic: IbmColorTable['Cool Gray']
       
-    , main: IbmColorTable['Teal']
+    , main: IbmColorTable['Magenta']
     , sub1: IbmColorTable['Cool Gray']
     , sub2: IbmColorTable['Cool Gray']
     , sub3: IbmColorTable['Cool Gray']

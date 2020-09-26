@@ -10,17 +10,17 @@ const GlobalStyle_Default = createGlobalStyle`
     
     background-color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '10', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', '10', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '10', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '10', 2])}%)
       `
     };
     
     color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 2])}%)
       `
     };
     
@@ -62,17 +62,17 @@ const GlobalStyle_Default = createGlobalStyle`
     
     background-color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%)
       `
     };
     
     color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 2])}%)
       `
     };
     
@@ -123,17 +123,17 @@ const GlobalStyle_Default = createGlobalStyle`
     
     background-color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', 'white', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%)
       `
     };
     
     color: ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 2])}%)
       `
     };
     
@@ -147,9 +147,9 @@ const GlobalStyle_Default = createGlobalStyle`
     &::placeholder {
       color: ${
         props => `hsl(
-          ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 0])}, 
-          ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 1])}%, 
-          ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 2])}%)
+          ${props.theme.getIn(['colorAssignment', 'basic', '50', 0])}, 
+          ${props.theme.getIn(['colorAssignment', 'basic', '50', 1])}%, 
+          ${props.theme.getIn(['colorAssignment', 'basic', '50', 2])}%)
         `
       };
     }
@@ -157,9 +157,9 @@ const GlobalStyle_Default = createGlobalStyle`
     border-radius: 4px;
     border: 2px solid ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '50', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', '50', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '50', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '50', 2])}%)
       `
     };
       
@@ -167,9 +167,9 @@ const GlobalStyle_Default = createGlobalStyle`
      outline: none;
      border: 2px solid ${
       props => `hsl(
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 0])}, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 1])}%, 
-        ${props.theme.getIn(['colorScheme', 'color', 'basic', '70', 2])}%)
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '70', 2])}%)
       `
       };
     }

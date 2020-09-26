@@ -23,7 +23,7 @@ import Nav from "./routes/Nav";
 import Korean from "./routes/Korean";
 
 //import addDeleteNotification from "./redux/thunks/addDeleteNotification";
-import * as korean from "./store/actions/korean";
+import * as card from "./store/actions/card";
 //import {replaceDataAuth, replaceData2Auth} from "./redux/actions/auth";
 
 
@@ -45,7 +45,7 @@ function App({
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch( korean.return_GET_LIST_CARD_KOREAN() );
+    dispatch( card.return_GET_LIST_CARD() );
   }, [])
   
   return (
@@ -69,7 +69,7 @@ function App({
         <Switch >
           
           <Route path="/" exact={true} component={Home} />
-          <Route path="/korea" component={Korean} />
+          <Route path="/korean" component={Korean} />
           
         </Switch >
         

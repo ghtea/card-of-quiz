@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
 
 
-import koreanReducer from './reducers/korean';
+import cardReducer from './reducers/card';
 import themeReducer from './reducers/theme';
 
 const rootReducer = combineReducers({
-  korean: koreanReducer,
+  card: cardReducer,
   theme: themeReducer
 });
 

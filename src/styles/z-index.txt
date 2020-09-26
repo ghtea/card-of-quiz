@@ -5,3 +5,5 @@
 main nav: 100
 
 hover on nav: 400
+
+card: 200, 199, 198, ...

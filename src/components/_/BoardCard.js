@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback, useMemo} from 'react';
-import {  BrowserRouter, Route, Switch } from "react-router-dom";
+import {  BrowserRouter, Route, Switch, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 //import queryString from 'query-string';
@@ -7,20 +7,20 @@ import axios from 'axios';
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
 
-import * as config from '../../../config';
+import * as config from '../../config';
 
+import Card from './BoardCard/Card';
+import {Div_BoardCard} from './BoardCard_Styled'
 
-
-import {Div_Card} from './Card_Styled'
-
-function Card({
+function BoardCard({
   
 }) {
   
-  //const basic = useSelector( state => state.color.getIn(['basic']), [] );
+  const listCardFocused = useSelector( state => state.card.getIn(['listCardFocused']), [] );
   
   const dispatch = useDispatch();
   
+  const { symbol } = useParams();
   //const [roleModifying, setRoleModifying] = useState('background');
   
   useEffect(()=>{
@@ -45,21 +45,19 @@ function Card({
   
   return (
     
-    <Div_Card>
+    <Div_BoardCard>
     
       <div>
-        card number
+        {listCardFocused.map( (element, index) =>
+          <Card
+            card={element}
+            index={index}
+            key={`card-index${index}`}
+          />
+        )}
       </div>
       
-      <div>
-        question
-      </div>
-      
-      <div>
-        answer
-      </div>
-      
-    </Div_Card>
+    </Div_BoardCard>
     
   )
 }
@@ -67,4 +65,4 @@ function Card({
 
 
 
-export default Card;
+export default BoardCard;

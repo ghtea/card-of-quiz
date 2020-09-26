@@ -7,14 +7,15 @@ import axios from 'axios';
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
 
-import * as config from '../../config';
+import * as config from '../../../config';
 
 
 
-import {Div_ListCard} from './ListCard_Styled'
+import {Div_Card} from './Card_Styled'
 
-function ListCard({
-  
+function Card({
+  card, 
+  index
 }) {
   
   //const basic = useSelector( state => state.color.getIn(['basic']), [] );
@@ -26,13 +27,22 @@ function ListCard({
   useEffect(()=>{
     
   }, [])
+  
+  
+  const indexZ = useMemo(()=>{
+    return (200-index)
+  }, [index]);
+  
+  const degRotate = useMemo(()=>{
+    if (index===0){
+      return 0;
+    }
+    else {
+      return ((Math.random() -0.5) * 10);
+    }
+  }, [index]);
+  
   /*
-  const colorTextHsl = useMemo(()=>{
-   
-    return `dd`
-  }, []);
-  
-  
   const onClick_ChangeRole = useCallback(
     
     (event, roleNew) => {
@@ -45,13 +55,21 @@ function ListCard({
   
   return (
     
-    <Div_ListCard>
+    <Div_Card index={index} indexZ={indexZ} degRotate={degRotate}>
     
       <div>
-        
+        card number
       </div>
       
-    </Div_ListCard>
+      <div>
+        question
+      </div>
+      
+      <div>
+        answer
+      </div>
+      
+    </Div_Card>
     
   )
 }
@@ -59,4 +77,4 @@ function ListCard({
 
 
 
-export default ListCard;
+export default Card;

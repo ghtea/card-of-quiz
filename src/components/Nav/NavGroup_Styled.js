@@ -146,9 +146,14 @@ export const Div_NavLink = styled.div`
   justify-content: center;
   align-items: center;
   
-  &:first-child { border-radius: 4px 4px 0 0; }
-  
-  &:last-child { border-radius: 0 0 4px 4px; }
+  &:first-child { 
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  &:last-child { 
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
   
   border-collapse: separate; 
   

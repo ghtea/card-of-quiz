@@ -97,9 +97,7 @@ const NavGroup = ({
 					> 
 						<Div_Triangle lengthBasic={12} onClick = {(event)=>onClick_NavGroupItemTitle(event, 'Korean') } /> 
 						<Div_Reactangle>
-							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/1')}> 1 </Div_NavLink>
-							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/2')}> 2 </Div_NavLink>
-							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/3')}> 3 </Div_NavLink>
+							<Div_NavLink onClick={(event)=>onClick_NavLink(event, '/korean/heart')}> heart </Div_NavLink>
 						</Div_Reactangle>
 					</Div_NavGroupItemPopup>
 				

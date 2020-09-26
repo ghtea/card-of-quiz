@@ -1,36 +1,48 @@
 import { call, spawn, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
+import queryString from 'query-string';
+
 import * as config from '../../../config';
 
-import * as korean from "../../actions/korean";
+import * as card from "../../actions/card";
 import * as theme from "../../actions/theme";
 
 
 
-const getListCardKorean_request = (idDeck) => {
-  return axios.get(`${config.URL_BACK}/${idDeck}`);
+const getListCard_request = () => {
+    
+    let queryRequestBefore = {
+        filterAuthor: 'Jeyon',
+        filterSubject: 'Korean',
+        filterSymbol: 'heart'
+    }
+      
+    const queryRequest = queryString.stringify(queryRequestBefore);
+          
+    return axios.get(`${config.URL_BACK}/card/?` + queryRequest);
 };
 
 
-function* getListCardKorean(idDeck) {
+function* getListCard() {
     try {
-        const { data } = yield call( getListCardKorean_request(idDeck) );
+        
+        const { data } = yield call( getListCard_request );
         console.log(data);
         
-        yield put( korean.return_REPLACE_KOREAN({
+        yield put( card.return_REPLACE_CARD({
             location: ['listCardFocused'],
             replacement: data
         }) );
         
         
     } catch (error) {
-        
-        console.log('GET_LIST_CARD_KOREAN has been failed');
+        console.log(error);
+        console.log('GET_LIST_CARD has been failed');
         //yield put( korean.return_GET_LIST_COLOR_Assignment_FAILURE() )
     }
 }
 
-export default getListCardKorean;
+export default getListCard;
 
 
 /*

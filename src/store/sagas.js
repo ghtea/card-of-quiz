@@ -1,10 +1,10 @@
 import { all, fork } from 'redux-saga/effects'
-import koreanSaga from './sagas/korean';
+import cardSaga from './sagas/card';
 
 
 export default function* rootSaga() {
   yield all ([
-    fork(koreanSaga)
+    fork(cardSaga)
   ])
   // code after fork-effect
 }

@@ -13,4 +13,5 @@ export const Div_Home = styled.div
   align-items: center;
   
   
+  
 `;

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import * as config from '../config';
 
-import ListCard from "../components/_/ListCard"
+import BoardCard from "../components/_/BoardCard"
 //import Heroes from "../components/Player/Heroes"
 
 import {useSelector, useDispatch} from "react-redux";
@@ -27,7 +27,7 @@ const Korean = ({
 
     <Switch>
     
-      <Route path="/korean/stage1" component={ListCard} />
+      <Route path="/korean/:symbol" component={BoardCard} />
       
     </Switch>
     
