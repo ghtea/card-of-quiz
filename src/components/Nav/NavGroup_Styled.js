@@ -23,7 +23,7 @@ export const Div_NavGroup = styled.div`
 
   
   @media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
-  	
+  	width: auto;
 	}
 	
 	& > div {
@@ -86,7 +86,6 @@ export const Div_NavGroupItemPopup = styled.div`
   align-items: center;
   
   position: absolute;
-  z-index: 400;
   top: 12px;
   left: 0;
   

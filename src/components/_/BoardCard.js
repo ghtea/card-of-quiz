@@ -5,18 +5,32 @@ import axios from 'axios';
 //import queryString from 'query-string';
 
 import {useSelector, useDispatch} from "react-redux";
-import Immutable from 'immutable';
+import Immutable, {toJS} from 'immutable';
 
 import * as config from '../../config';
 
-import Card from './BoardCard/Card';
+import CardQuiz from './BoardCard/CardQuiz';
+import CardReward from './BoardCard/CardReward';
 import {Div_BoardCard} from './BoardCard_Styled'
 
 function BoardCard({
   
 }) {
   
-  const listCardFocused = useSelector( state => state.card.getIn(['listCardFocused']), [] );
+  const listCardQuizFocused = useSelector( state => state.card.getIn(['listCardQuizFocused']), [] );
+  const loadingListCardQuizFocused = useSelector( state => state.basic.getIn(['loading', 'listCardQuizFocused']), [] );
+  const readyListCardQuizFocused = useSelector( state => state.basic.getIn(['ready', 'listCardQuizFocused']), [] );
+  
+  const cardFront = useMemo(()=>{
+    return listCardQuizFocused.getIn([0])
+  }, [listCardQuizFocused]);
+  
+  const [showingReward, setShowingReward] = useState(false);
+  
+  const listCardQuizFocusedOthers = useMemo(()=>{
+    const result = listCardQuizFocused.shift()
+    return result;
+  }, [listCardQuizFocused]);
   
   const dispatch = useDispatch();
   
@@ -46,15 +60,32 @@ function BoardCard({
   return (
     
     <Div_BoardCard>
-    
+      
       <div>
-        {listCardFocused.map( (element, index) =>
-          <Card
-            card={element}
-            index={index}
-            key={`card-index${index}`}
-          />
-        )}
+        {loadingListCardQuizFocused && <div> loading </div>}  
+        
+        {readyListCardQuizFocused ? 
+          (<>
+          {!showingReward?
+            <CardQuiz
+              card={cardFront}
+              index={0}
+              key={`card-index0`}
+            />
+            : <CardReward
+              />
+          }
+          {listCardQuizFocusedOthers.map( (element, indexOthers) =>
+            (<CardQuiz
+              card={element}
+              index={indexOthers+1}
+              key={`card-index${indexOthers+1}`}
+            />)
+          )}
+          </>)
+          : <div> not ready </div>
+        }  
+        
       </div>
       
     </Div_BoardCard>

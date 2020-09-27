@@ -5,7 +5,7 @@ export const Div_BoardCard = styled.div
 `
   
   width: 350px;
-  height: 500px;
+  height: 520px;
   
   display: flex;
   flex-direction: column;

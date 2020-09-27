@@ -26,7 +26,7 @@ const Bonus = ({
 	
   <Div_Bonus>
   	
-  	<div> 2020. 9. </div>
+  	<div> By Jeyon </div>
 		
 	</Div_Bonus>
 	

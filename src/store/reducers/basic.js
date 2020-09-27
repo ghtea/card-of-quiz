@@ -1,7 +1,7 @@
 import {handleActions} from 'redux-actions';
 import Immutable, { Map, List, fromJS } from 'immutable';
 
-import * as card from '../actions/card';
+import * as basic from '../actions/basic';
 
 //import defaultUsingColorAssignment from '../../styles/defaultUsingColorAssignment'
 
@@ -10,20 +10,24 @@ import * as card from '../actions/card';
 
 
 const stateInitial = fromJS({
-  listCardQuizFocused: [],
-  listCardRewardFocused: [],
-  
-  showingReward: false,
-  indexReward: 0
+  loading: {
+    listCardQuizFocused: false,
+    listCardRewardFocused: false
+  },
+  ready: {
+    listCardQuizFocused: false,
+    listCardRewardFocused: false
+  }  
 });
 
 
 
 
 
-const cardReducer = handleActions({
+const basicReducer = handleActions({
   
-  [card.REPLACE_CARD]: (state, action) => {
+  
+  [basic.REPLACE_BASIC]: (state, action) => {
     //console.log('hiiii');
     
     const location = action['payload']['location'] || [];
@@ -41,4 +45,4 @@ const cardReducer = handleActions({
 }, stateInitial);
 
 
-export default cardReducer;
+export default basicReducer;

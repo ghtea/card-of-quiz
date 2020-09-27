@@ -2,14 +2,16 @@ import { call, spawn, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 import * as config from '../../config';
 
-import * as card from "../actions/card";
-import * as theme from "../actions/theme";
+import * as actionsCard from "../actions/card";
+//import * as actionsTheme from "../actions/theme";
 
-import getListCard from './card/getListCard';
+import getListCardQuiz from './card/getListCardQuiz';
+import getListCardReward from './card/getListCardReward';
 
 
 export default function* cardSaga() {
-    yield takeEvery( card.GET_LIST_CARD, getListCard );
+    yield takeEvery( actionsCard.GET_LIST_CARD_QUIZ, getListCardQuiz );
+    yield takeEvery( actionsCard.GET_LIST_CARD_REWARD, getListCardReward );
 }
 
 

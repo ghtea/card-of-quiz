@@ -30,7 +30,7 @@ export const Div_Nav = styled.div`
     `
   };
   
-  z-index: 100; 
+  z-index: 500; 
   
   
   height: auto;
@@ -61,83 +61,5 @@ export const Div_Nav = styled.div`
 	  
 	}
 	
-	& > div {
-		width: auto;
-		heigth: auto;
-		
-	}
 `
 
-
-
-export const Div_Nav_Title = styled.div`
-
-  width: 100%;
-  height: 50px;
-  
-  color: ${
-    props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%)
-    `
-  };
-  
-	display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  
-  @media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
-  	
-	  display: flex;
-	  flex-direction: row;
-	  justify-content: flex-start;
-	  align-items: center;
-	  
-	}
-	
-	& > div {
-		width: auto;
-		heigth: auto;
-	}
-`
-
-
-
-export const Div_Nav_Items = styled.div`
-
-  width: 100%;
-  height: 36px;
-  
-  color: ${
-    props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'basic', '20', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'basic', '20', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'basic', '20', 2])}%)
-    `
-  };
-  
-	display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  
-  @media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
-  	
-	}
-	
-	& > div {
-		width: auto;
-		heigth: auto;
-		
-	}
-`
-
-
-export const Div_Nav_Bonus = styled.div`
-
-  
-`
