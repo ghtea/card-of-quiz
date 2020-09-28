@@ -41,7 +41,7 @@ function App({
 }) {
   
   const usingTheme = useSelector( state => state.theme.get('usingTheme'), [] );
-  console.log(usingTheme.toJS());
+  //console.log(usingTheme.toJS());
   const dispatch = useDispatch();
   
   useEffect(()=>{

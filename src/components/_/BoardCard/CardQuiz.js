@@ -16,11 +16,11 @@ import {
   Div_CardQuiz, 
   Div_CardQuiz_TopLeft, Div_CardQuiz_TopRight, Div_CardQuiz_BottomLeft, Div_CardQuiz_BottomRight, 
   Div_CardQuiz_CornerNumber, Button_SubmitAnswer,
-  Div_CardQuiz_Quiz, Div_CardQuiz_Answer, Div_CardQuiz_AnswerText
+  Div_CardQuiz_Quiz, Div_CardQuiz_Answer
 } from './CardQuiz_Styled'
 
 function CardQuiz({
-  card,  // 이것도 Immutable Map
+  cardQuiz,  // 이것도 Immutable Map
   index
 }) {
   
@@ -29,10 +29,6 @@ function CardQuiz({
   const dispatch = useDispatch();
   
   //const [roleModifying, setRoleModifying] = useState('background');
-  
-  useEffect(()=>{
-    
-  }, [])
   
   
   const indexZ = useMemo(()=>{
@@ -55,13 +51,14 @@ function CardQuiz({
     let roleColor='';
     let phaseColor='';
     
-    if (card.getIn(['symbol']) === 'heart'){ roleColor='main'; phaseColor='70' };
+    if (cardQuiz.getIn(['symbol']) === 'heart'){ roleColor='main'; phaseColor='70' };
     return ( { roleColor, phaseColor} )
-  }, [card]);
+  }, [cardQuiz]);
+  
   
   const returnIconSymbol = useCallback(
     (symbol) => {
-      if (symbol==='heart'){
+      if (symbol==='Heart'){
         return (
           <IconHeart 
             width={'28px'} height={'28px'}
@@ -75,22 +72,15 @@ function CardQuiz({
   );
   
   const returnAnswer = useCallback(
-    (objAnswer) => {
-      const kind = objAnswer['kind'];  // 헷갈림 주의
+    () => {
+      const kind = cardQuiz.getIn(['answer', 'kind']);  // 헷갈림 주의
       if (objAnswer['kind']==='text'){
         return (
-          <Div_CardQuiz_AnswerText>
-            <div> 
-              {objAnswer[kind]['placeholder']}
-            </div>
-            <div>
-              <input  type='text' placeholder={objAnswer[kind]['placeholder']}/>
-            </div>
-          </Div_CardQuiz_AnswerText>
+          <AnswerText answer={cardQuiz.getIn(['answer'])}/>
         )
       }
     },
-    []
+    [cardQuiz]
   );
   
   
@@ -99,14 +89,14 @@ function CardQuiz({
     (event) => {
       
       dispatch(
-        actionsCard.return_REPLACE_CARD({
-          location: ['showingReward'],
-          replacement: true
+        actionsCard.return_SUBMIT_ANSWER({
+          cardQuiz: cardQuiz,
+          valueAnswer: valueAnswer
         })
       );
       
     },
-    []
+    [cardQuiz]
   );
   
   
@@ -117,18 +107,16 @@ function CardQuiz({
     
       <Div_CardQuiz_TopLeft {...objColor}>
         <div> 
-          {card.getIn(['subject'])} 
+          {cardQuiz.getIn(['subject'])} 
         </div>
       </Div_CardQuiz_TopLeft>
       
       <Div_CardQuiz_TopRight {...objColor}> 
-        <div> {returnIconSymbol('heart')} </div>
-        <Div_CardQuiz_CornerNumber className={'card-number'} {...objColor} > {card.getIn(['number'])} </Div_CardQuiz_CornerNumber>
+        <div> {returnIconSymbol( cardQuiz.getIn(['symbol']) )} </div>
       </Div_CardQuiz_TopRight>
       
       <Div_CardQuiz_BottomLeft {...objColor}>
-        <Div_CardQuiz_CornerNumber className={'card-number'} {...objColor} > {card.getIn(['number'])} </Div_CardQuiz_CornerNumber>
-        <div> {returnIconSymbol('heart')} </div>
+        <div> { returnIconSymbol( cardQuiz.getIn(['symbol']) )} </div>
       </Div_CardQuiz_BottomLeft>
       
       <Div_CardQuiz_BottomRight {...objColor}> 
@@ -139,12 +127,12 @@ function CardQuiz({
         
 
       <Div_CardQuiz_Quiz>
-        <div> {card.getIn(['quiz', 'instruction'])} </div>
-        <div> {card.getIn(['quiz', 'text'])} </div>
+        <div> {cardQuiz.getIn(['quiz', 'instruction'])} </div>
+        <div> {cardQuiz.getIn(['quiz', 'text'])} </div>
       </Div_CardQuiz_Quiz>
       
       <Div_CardQuiz_Answer>
-        {returnAnswer(card.getIn(['answer']).toJS())}
+        {returnAnswer()}
       </Div_CardQuiz_Answer>
       
     

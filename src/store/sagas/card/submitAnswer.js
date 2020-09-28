@@ -9,35 +9,60 @@ import * as actionsCard from "../../actions/card";
 //import * as theme from "../../actions/theme";
 
 
+/*
 
-const getListCardReward_request = () => {
-    
-    let queryRequestBefore = {
-        filterAuthor: 'Jeyon',
-        filterSubject: 'Korean',
-        filterSymbol: 'heart'
+  useEffect(()=>{
+    if (index===0){
+      dispatch(
+        actionsCard.return_GET_LIST_CARD_REWARD({
+          objQuery: {
+            filterKind: 'gif',
+            filterTags: JSON.stringify(['love', 'cute', 'character'])
+          }
+        })
+      );
     }
-      
-    const queryRequest = queryString.stringify(queryRequestBefore);
-          
-    return axios.get(`${config.URL_BACK}/cardReward/?` + queryRequest);
-};
+  }, [])
+  
+*/
 
-
-function* getListCardReward() {
+// https://stackoverflow.com/questions/38605420/how-to-get-action-params-from-saga
+function* submitAnswer(action) {
     try {
         
-            yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardRewardFocused'],
+        const indexCardQuizFocused = action['payload']['indexCardQuizFocused'];
+        const valueAnswerTrying = action['payload']['valueAnswerTrying'];
+        
+        const answerCorrect =  yield select( (state) => state.card.getIn(['listCardQuizFocused', indexCardQuizFocused, 'answer']) ); 
+        
+        const kindAnswer = answerCorrect.getIn(['kind']);
+        const valueAnswerCorrect = answerCorrect.getIn([kindAnswer,'value']);
+        
+        if (valueAnswerTrying === valueAnswerCorrect){
+            
+            yield put( actionsCard.return_REPLACE_CARD({
+                location: ['listCardQuizFocused', indexCardQuizFocused, 'solved'],
+                replacement: true
+            }) );
+            
+        }
+        else {
+            
+            yield put( actionsCard.return_REPLACE_CARD({
+                location: ['listCardQuizFocused', indexCardQuizFocused, 'solved'],
                 replacement: false
             }) );
+            
+        }
+        
+            
             
             yield put( actionsBasic.return_REPLACE_BASIC({
                 location: ['loading', 'listCardRewardFocused'],
                 replacement: true
             }) );
         
-        const { data } = yield call( getListCardReward_request );
+        const { data } = yield call( getListCardReward_request, action.payload.objQuery );
         console.log(data);
         
         // main
@@ -75,7 +100,7 @@ function* getListCardReward() {
     }
 }
 
-export default getListCardReward;
+export default submitAnswer;
 
 
 /*

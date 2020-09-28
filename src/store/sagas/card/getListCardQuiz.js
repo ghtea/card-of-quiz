@@ -15,7 +15,7 @@ const getListCardQuiz_request = () => {
     let queryRequestBefore = {
         filterAuthor: 'Jeyon',
         filterSubject: 'Korean',
-        filterSymbol: 'heart'
+        filterSymbol: 'Heart'
     }
       
     const queryRequest = queryString.stringify(queryRequestBefore);
@@ -28,12 +28,12 @@ function* getListCardQuiz() {
     try {
         
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardQuizFocused'],
+                location: ['ready', 'listCardQuiz'],
                 replacement: false
             }) );
             
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardQuizFocused'],
+                location: ['loading', 'listCardQuiz'],
                 replacement: true
             }) );
         
@@ -42,17 +42,17 @@ function* getListCardQuiz() {
         
         // main
         yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCardQuizFocused'],
+            location: ['listCardQuiz'],
             replacement: data
         }) );
 
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardQuizFocused'],
+                location: ['loading', 'listCardQuiz'],
                 replacement: false
             }) );
             
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardQuizFocused'],
+                location: ['ready', 'listCardQuiz'],
                 replacement: true
             }) );
         
@@ -60,12 +60,12 @@ function* getListCardQuiz() {
     } catch (error) {
         
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardQuizFocused'],
+                location: ['loading', 'listCardQuiz'],
                 replacement: false
             }) );
             
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardQuizFocused'],
+                location: ['ready', 'listCardQuiz'],
                 replacement: false
             }) );
             

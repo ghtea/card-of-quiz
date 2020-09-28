@@ -25,3 +25,14 @@ export const return_GET_LIST_CARD_REWARD = (payload) => {
         payload: payload
     }
 };
+
+
+
+export const SUBMIT_ANSWER = 'SUBMIT_ANSWER';
+
+export const return_SUBMIT_ANSWER = (payload) => {
+    return {
+        type: SUBMIT_ANSWER,
+        payload: payload
+    }
+};

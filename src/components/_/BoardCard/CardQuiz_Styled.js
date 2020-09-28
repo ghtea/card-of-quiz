@@ -150,25 +150,3 @@ export const Div_CardQuiz_Answer = styled.div`
   width: 260px;
   margin-bottom: 60px;
 `
-
-export const Div_CardQuiz_AnswerText = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  
-  & > div:nth-child(1){
-    width: auto;
-    height: 30px;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  
-& > div:nth-child(2){
-    & > input {
-    }
-  }
-`

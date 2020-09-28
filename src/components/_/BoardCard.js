@@ -77,7 +77,7 @@ function BoardCard({
           }
           {listCardQuizFocusedOthers.map( (element, indexOthers) =>
             (<CardQuiz
-              card={element}
+              cardQuiz={element}
               index={indexOthers+1}
               key={`card-index${indexOthers+1}`}
             />)
