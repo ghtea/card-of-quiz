@@ -1,4 +1,4 @@
-import { call, spawn, put, takeEvery } from "redux-saga/effects";
+import { call, spawn, put, takeEvery, select } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
 
@@ -39,8 +39,8 @@ function* matchReward(action) {
     
     const objQuery = {
         filterKind: 'gif',
-        filterTags: JSON.stringify(reward.getIn(['appointed']);
-    }
+        filterTags: JSON.stringify(reward.getIn(['appointed']))
+    };
     
     try {
         const { data } = yield call( getListReward_request, objQuery );
@@ -51,7 +51,7 @@ function* matchReward(action) {
         // main
         yield put( actionsCard.return_REPLACE_CARD({
             location: ['listCard', indexCardMatching, 'reward', 'loading'],
-            replacement: {...lreward, ...rewardRandom}
+            replacement: {...reward, ...rewardRandom}
         }) );
             
             yield put( actionsCard.return_REPLACE_CARD({

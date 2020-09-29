@@ -5,7 +5,7 @@ import axios from 'axios';
 //import queryString from 'query-string';
 
 import {useSelector, useDispatch} from "react-redux";
-import Immutable, {toJS} from 'immutable';
+import Immutable, {toJS, fromJS} from 'immutable';
 
 import * as config from '../../config';
 
@@ -17,20 +17,23 @@ function BoardCard({
   
 }) {
   
-  const listCardQuizFocused = useSelector( state => state.card.getIn(['listCardQuizFocused']), [] );
-  const loadingListCardQuizFocused = useSelector( state => state.basic.getIn(['loading', 'listCardQuizFocused']), [] );
-  const readyListCardQuizFocused = useSelector( state => state.basic.getIn(['ready', 'listCardQuizFocused']), [] );
+  const listCard = useSelector( state => state.card.getIn(['listCard']), [] );
+  const loadingListCardQuiz = useSelector( state => state.basic.getIn(['loading', 'listCardQuiz']), [] );
+  const readyListCardQuiz = useSelector( state => state.basic.getIn(['ready', 'listCardQuiz']), [] );
+  //console.log(listCard.toJS())
   
+  const indexCardFocused = useSelector( state => state.card.getIn(['indexCardFocused']), [] );
+  
+  /*
   const cardFront = useMemo(()=>{
-    return listCardQuizFocused.getIn([0])
-  }, [listCardQuizFocused]);
+    return listCard.getIn([0])
+  }, [listCard]);
   
-  const [showingReward, setShowingReward] = useState(false);
-  
-  const listCardQuizFocusedOthers = useMemo(()=>{
-    const result = listCardQuizFocused.shift()
+  const listCardOthers = useMemo(()=>{
+    const result = listCard.shift()
     return result;
-  }, [listCardQuizFocused]);
+  }, [listCard]);
+  */
   
   const dispatch = useDispatch();
   
@@ -62,9 +65,42 @@ function BoardCard({
     <Div_BoardCard>
       
       <div>
-        {loadingListCardQuizFocused && <div> loading </div>}  
+        {loadingListCardQuiz && <div> loading </div>}  
         
-        {readyListCardQuizFocused ? 
+        {readyListCardQuiz && listCard.toJS().map( (objCard, index) => {
+          //console.log(listCard.toJS())
+          const card = fromJS(objCard);
+          const showingReward = card.getIn(['reward', 'showing']);
+          if (!showingReward) {
+            return (
+              <CardQuiz
+                card={card}
+                index={index}
+                key={`card-quiz-index${index}`}
+              />
+            )
+          }
+          else {
+            return (
+              <CardReward
+                card={card}
+                index={index}
+                key={`card-reward-index${index}`}
+              />
+            )
+          }
+        } )}
+          
+        
+      </div>
+      
+    </Div_BoardCard>
+    
+  )
+}
+
+/*
+
           (<>
           {!showingReward?
             <CardQuiz
@@ -77,7 +113,7 @@ function BoardCard({
           }
           {listCardQuizFocusedOthers.map( (element, indexOthers) =>
             (<CardQuiz
-              cardQuiz={element}
+              card={element}
               index={indexOthers+1}
               key={`card-index${indexOthers+1}`}
             />)
@@ -85,15 +121,7 @@ function BoardCard({
           </>)
           : <div> not ready </div>
         }  
-        
-      </div>
-      
-    </Div_BoardCard>
-    
-  )
-}
-
-
+*/
 
 
 export default BoardCard;

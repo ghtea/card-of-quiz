@@ -9,6 +9,7 @@ import getListCardQuiz from './card/getListCardQuiz';
 import matchReward from './card/matchReward';
 //import completeListCard from './card/completeListCard';
 import submitAnswer from './card/submitAnswer';
+import changeCardFocused from './card/changeCardFocused';
 
 
 export default function* cardSaga() {
@@ -18,6 +19,8 @@ export default function* cardSaga() {
     yield takeEvery( actionsCard.MATCH_REWARD, matchReward);
     
     yield takeEvery( actionsCard.SUBMIT_ANSWER, submitAnswer );
+    
+    yield takeEvery( actionsCard.CHANGE_CARD_FOCUSED, changeCardFocused );
 
 }
 

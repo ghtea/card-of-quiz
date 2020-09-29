@@ -11,17 +11,26 @@ export const return_REPLACE_CARD = (payload) => {
 
 //
 export const GET_LIST_CARD_QUIZ = 'GET_LIST_CARD_QUIZ';
-export const GET_LIST_CARD_REWARD = 'GET_LIST_CARD_REWARD';
-
 export const return_GET_LIST_CARD_QUIZ = (payload) => {
     return {
         type: GET_LIST_CARD_QUIZ,
         payload: payload
     }
 };
-export const return_GET_LIST_CARD_REWARD = (payload) => {
+
+export const CHANGE_CARD_FOCUSED = 'CHANGE_CARD_FOCUSED';
+
+export const return_CHANGE_CARD_FOCUSED = (payload) => {
     return {
-        type: GET_LIST_CARD_REWARD,
+        type: CHANGE_CARD_FOCUSED,
+        payload: payload
+    }
+};
+
+export const MATCH_REWARD = 'MATCH_REWARD';
+export const return_MATCH_REWARD = (payload) => {
+    return {
+        type: MATCH_REWARD,
         payload: payload
     }
 };
@@ -36,3 +45,4 @@ export const return_SUBMIT_ANSWER = (payload) => {
         payload: payload
     }
 };
+

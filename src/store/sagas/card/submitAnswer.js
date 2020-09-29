@@ -1,4 +1,4 @@
-import { call, spawn, put, takeEvery } from "redux-saga/effects";
+import { call, spawn, put, takeEvery, select } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
 
@@ -30,73 +30,48 @@ import * as actionsCard from "../../actions/card";
 function* submitAnswer(action) {
     try {
         
-        const indexCardQuizFocused = action['payload']['indexCardQuizFocused'];
-        const valueAnswerTrying = action['payload']['valueAnswerTrying'];
+        const indexCardFocused = action['payload']['indexCardFocused'];
+        const valueTrying = action['payload']['valueTrying'];
         
-        const answerCorrect =  yield select( (state) => state.card.getIn(['listCardQuizFocused', indexCardQuizFocused, 'answer']) ); 
+        const answer =  yield select( (state) => state.card.getIn(['listCard', indexCardFocused, 'answer']) ); 
         
-        const kindAnswer = answerCorrect.getIn(['kind']);
-        const valueAnswerCorrect = answerCorrect.getIn([kindAnswer,'value']);
+        const kindAnswer = answer.getIn(['kind']);
+        const valueCorrect = answer.getIn([kindAnswer,'valueCorrect']);
         
-        if (valueAnswerTrying === valueAnswerCorrect){
+        if (valueTrying === valueCorrect){
+            
+            console.log('answer is correct!')
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCardQuizFocused', indexCardQuizFocused, 'solved'],
+                location: ['listCard', indexCardFocused, 'solved'],
+                replacement: true
+            }) );
+            
+            yield put( actionsCard.return_REPLACE_CARD({
+                location: ['listCard', indexCardFocused, 'reward', 'showing'],
                 replacement: true
             }) );
             
         }
         else {
             
+            console.log('answer is wrong')
+            
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCardQuizFocused', indexCardQuizFocused, 'solved'],
+                location: ['listCard', indexCardFocused, 'solved'],
                 replacement: false
             }) );
             
+            yield put( actionsCard.return_REPLACE_CARD({
+                location: ['listCard', indexCardFocused, 'reward', 'showing'],
+                replacement: false
+            }) );
         }
         
-            
-            
-            yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardRewardFocused'],
-                replacement: true
-            }) );
-        
-        const { data } = yield call( getListCardReward_request, action.payload.objQuery );
-        console.log(data);
-        
-        // main
-        yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCardRewardFocused'],
-            replacement: data
-        }) );
-
-            yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardRewardFocused'],
-                replacement: false
-            }) );
-            
-            yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardRewardFocused'],
-                replacement: true
-            }) );
         
         
     } catch (error) {
         
-            yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardRewardFocused'],
-                replacement: false
-            }) );
-            
-            yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardRewardFocused'],
-                replacement: false
-            }) );
-            
-        console.log(error);
-        console.log('GET_LIST_CARD_REWARD has been failed');
-        //yield put( korean.return_GET_LIST_COLOR_Assignment_FAILURE() )
     }
 }
 

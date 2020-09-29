@@ -3,72 +3,13 @@ import Immutable from 'immutable';
 
 import {Div_Card} from './Card_Styled';
 
-export const Div_CardReward = styled(Div_Card)
+export const Div_CardQuiz = styled(Div_Card)
 `
-  width: 300px;
-  height: 450px;
-  border-radius: 20px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  
-  position: relative;
-  
-  background-color: ${
-    props => {
-      if (props.index === 0) {
-        return (`
-          hsl(
-            ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
-            ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
-            ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%
-          )
-        `)
-      }
-      else {
-        return (`
-          hsl(
-            ${props.theme.getIn(['colorAssignment', 'basic', '10', 0])}, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '10', 1])}%, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '10', 2])}%
-          )
-        `)
-      }
-    }
-  };
-  
-  border:  ${
-    props => {
-      if (props.index === 0) {
-        return (`
-          2px solid
-          hsl(
-            ${props.theme.getIn(['colorAssignment', 'basic', '60', 0])}, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '60', 1])}%, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '60', 2])}%
-          )
-        `)
-      }
-      else {
-        return (`
-          1px solid
-          hsl(
-            ${props.theme.getIn(['colorAssignment', 'basic', '80', 0])}, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '80', 1])}%, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '80', 2])}%
-          )
-        `)
-      }
-    }
-  };
-  
   box-shadow:  ${
     props => {
       if (props.index === 0) {
         return (`
-          0 0 5px 0px
+          0 0 8px 0px
           hsl(
             ${props.theme.getIn(['colorAssignment', 'basic', '40', 0])}, 
             ${props.theme.getIn(['colorAssignment', 'basic', '40', 1])}%, 
@@ -89,54 +30,10 @@ export const Div_CardReward = styled(Div_Card)
     }
   };
   
-  
-  position: absolute;
-  z-index: ${props=>props.indexZ};
-  
-  top: 50%;
-  left: 50%;
-  transform: rotate(${props=>props.degRotate}deg) translateX(-50%) translateY(-50%) ;
-  
-	@media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
-	 
-	}
-  
-  
 `;
 
-/*
-export const Div_CardReward_Top = styled.div`
-  height: 30px;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  
-  font-size: 1.2rem;
-  
-  & > div {
-    width: auto;
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    
-    & > div { 
-      width: auto; 
-    }
-  }
-  
-`*/
 
-
-
-
-
-
-
-const Div_CardReward_Corner = styled.div`
+const Div_CardQuiz_Corner = styled.div`
   position: absolute;
   width: auto;
   height: 30px;
@@ -151,13 +48,13 @@ const Div_CardReward_Corner = styled.div`
   }
 `
 
-export const Div_CardReward_TopLeft = styled(Div_CardReward_Corner)`
+export const Div_CardQuiz_TopLeft = styled(Div_CardQuiz_Corner)`
   font-size: 1.2rem;
   left: 10px;
   top: 10px;
 `
 
-export const Div_CardReward_TopRight = styled(Div_CardReward_Corner)`
+export const Div_CardQuiz_TopRight = styled(Div_CardQuiz_Corner)`
   font-size: 1.2rem;
   right: 10px;
   top: 10px;
@@ -173,7 +70,7 @@ export const Div_CardReward_TopRight = styled(Div_CardReward_Corner)`
   }
 `
 
-export const Div_CardReward_BottomLeft = styled(Div_CardReward_Corner)`
+export const Div_CardQuiz_BottomLeft = styled(Div_CardQuiz_Corner)`
   font-size: 1.2rem;
   left: 10px;
   bottom: 10px;
@@ -189,7 +86,7 @@ export const Div_CardReward_BottomLeft = styled(Div_CardReward_Corner)`
   }
 `
 
-export const Div_CardReward_BottomRight = styled(Div_CardReward_Corner)`
+export const Div_CardQuiz_BottomRight = styled(Div_CardQuiz_Corner)`
   font-size: 1.2rem;
   right: 10px;
   bottom: 10px;
@@ -197,7 +94,7 @@ export const Div_CardReward_BottomRight = styled(Div_CardReward_Corner)`
 
 
 
-export const Div_CardReward_CornerNumber = styled.div`
+export const Div_CardQuiz_CornerNumber = styled.div`
   width: auto;
   padding-left: 5px;
   padding-right: 5px;
@@ -206,7 +103,7 @@ export const Div_CardReward_CornerNumber = styled.div`
 `
 
 
-export const Button_BackToQuiz = styled.button`
+export const Button_SubmitAnswer = styled.button`
   border-radius: 12px;
   background-color: ${props=>` 
     hsl(
@@ -227,7 +124,7 @@ export const Button_BackToQuiz = styled.button`
 
 
 
-export const Div_CardReward_Reward = styled.div`
+export const Div_CardQuiz_Quiz = styled.div`
   width: 260px;
   margin-top: 60px;
   
@@ -248,3 +145,8 @@ export const Div_CardReward_Reward = styled.div`
   }
 `
 
+
+export const Div_CardQuiz_Answer = styled.div`
+  width: 260px;
+  margin-bottom: 60px;
+`

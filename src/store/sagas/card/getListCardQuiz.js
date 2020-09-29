@@ -42,7 +42,7 @@ function* getListCardQuiz() {
         
         // main
         yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCardQuiz'],
+            location: ['listCard'],
             replacement: data
         }) );
 
