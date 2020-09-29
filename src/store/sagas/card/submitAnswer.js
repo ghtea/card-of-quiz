@@ -52,6 +52,11 @@ function* submitAnswer(action) {
                 replacement: true
             }) );
             
+            yield put( actionsCard.return_REPLACE_CARD({
+                location: ['listCard', indexCardFocused, 'solved'],
+                replacement: true
+            }) );
+            
         }
         else {
             
@@ -66,6 +71,12 @@ function* submitAnswer(action) {
                 location: ['listCard', indexCardFocused, 'reward', 'showing'],
                 replacement: false
             }) );
+            
+            yield put( actionsCard.return_REPLACE_CARD({
+                location: ['listCard', indexCardFocused, 'solved'],
+                replacement: false
+            }) );
+            
         }
         
         

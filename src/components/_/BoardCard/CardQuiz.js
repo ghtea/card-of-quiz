@@ -36,6 +36,14 @@ function CardQuiz({
   
   //const [roleModifying, setRoleModifying] = useState('background');
   
+  useEffect(()=>{
+    if ( card.getIn(['solved']) === false ) {
+      dispatch( actionsCard.return_MATCH_REWARD({
+        indexCardMatching: index
+      }) );
+    }
+  },[])
+  
   
   const indexZ = useMemo(()=>{
     return (200-index)

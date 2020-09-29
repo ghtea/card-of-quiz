@@ -6,9 +6,11 @@ import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
+import * as actionsCard from "../../../store/actions/card";
 
 import * as config from '../../../config';
 
+import RewardGif from './CardReward/RewardGif';
 
 import IconHeart from '../../../svgs/symbol/IconHeart';
 import { 
@@ -73,16 +75,34 @@ function CardReward({
     []
   );
   
-  /*
-  const onClick_ChangeRole = useCallback(
-    
-    (event, roleNew) => {
-      setRoleModifying(roleNew);
-    },
-    []
-  );
-  */
   
+  const returnReward = useCallback(
+    () => {
+      const kind = card.getIn(['reward', 'kind']);  // 헷갈림 주의]
+      
+      console.log('kind');
+      console.log(kind);
+      
+      if (kind ==='gif'){
+        return (
+          <RewardGif reward={card.getIn(['reward'])}/>
+        )
+      }
+    },
+    [card]
+  );
+  
+  const onClick_BackToQuiz = useCallback(
+    (event) => {
+      dispatch(
+        actionsCard.return_REPLACE_CARD({
+          location: ['listCard', index, 'reward', 'showing'],
+          replacement: false
+        })
+      );
+    },
+    [index, actionsCard]
+  );
   
   return (
     
@@ -103,12 +123,12 @@ function CardReward({
       </Div_CardReward_BottomLeft>
       
       <Div_CardReward_BottomRight {...objColor}> 
-        <div> <Button_BackToQuiz> Quiz </Button_BackToQuiz>  </div>
+        <div> <Button_BackToQuiz onClick={onClick_BackToQuiz}> Quiz </Button_BackToQuiz>  </div>
       </Div_CardReward_BottomRight>
         
 
       <Div_CardReward_Reward>
-        <div>  </div>
+        {returnReward()}
       </Div_CardReward_Reward>
       
       

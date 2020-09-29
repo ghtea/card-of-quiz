@@ -229,22 +229,15 @@ export const Button_BackToQuiz = styled.button`
 
 export const Div_CardReward_Reward = styled.div`
   width: 260px;
+  height: 330px; /* 450 - 60 - 60  */
   margin-top: 60px;
   
-  & > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
-  & > div:nth-child(n+2){
-    margin-top: 20px;
-  }
-  
-  & > div:nth-child(1){ /* instruction */
-    height: auto;
-    min-height: 40px;
-  }
+  /*background-color: red;*/
 `
+
 

@@ -44,15 +44,20 @@ function* matchReward(action) {
     
     try {
         const { data } = yield call( getListReward_request, objQuery );
-            console.log(data);
+            //console.log(data);
         // data 는 listReward
         const rewardRandom = data[Math.floor(Math.random()*data.length)];
         
         // main
         yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCard', indexCardMatching, 'reward', 'loading'],
-            replacement: {...reward, ...rewardRandom}
+            location: ['listCard', indexCardMatching, 'reward'],
+            replacement: {...reward.toJS(), ...rewardRandom['reward']}
         }) );
+        
+        
+        const card =  yield select( (state) => state.card.getIn(['listCard', indexCardMatching]) ); 
+        console.log(card.toJS())
+            
             
             yield put( actionsCard.return_REPLACE_CARD({
                 location: ['listCard', indexCardMatching, 'reward', 'loading'],

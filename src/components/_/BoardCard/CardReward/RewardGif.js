@@ -11,12 +11,12 @@ import * as actionsCard from "../../../../store/actions/card";
 import * as config from '../../../../config';
 
 import { 
-  Div_AnswerText
-} from './AnswerText_Styled'
+  Div_RewardGif, Img_RewardGif
+} from './RewardGif_Styled'
 
 
-function AnswerText({
-  answer // 이것도 Immutable Map
+function RewardGif({
+  reward // 이것도 Immutable Map
 }) {
   
 
@@ -61,17 +61,12 @@ function AnswerText({
   
   return (
     
-    <Div_AnswerText>
-      <div> 
-        {answer.getIn(['text', 'placeholder'])}
-      </div>
-      <div>
-        <input type='text' value={valueTrying} onChange={onChange_InputValueTrying} placeholder={placeholder}/>
-      </div>
-    </Div_AnswerText>
+    <Div_RewardGif>
+      <Img_RewardGif src={reward.getIn(['link'])} />
+    </Div_RewardGif>
     
   )
 }
 
 
-export default AnswerText;
+export default RewardGif;
