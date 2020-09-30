@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import Immutable from 'immutable';
 
-// common styles in both CardQuiz and CardReward
-export const Div_Card = styled.div
-`
+
+
+// about transform   https://brunch.co.kr/@99-life/4
+export const Div_CardFrame = styled.div`
   
   width: 300px;
   height: 450px;
@@ -11,10 +12,45 @@ export const Div_Card = styled.div
   
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  position: absolute;
+  z-index: ${props=>props.indexZ};
+  
+  left: 50%;
+  top: 50%;
+  
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  
+  /*transform:${props=>`rotateX(${props.degRotate}deg) translateX(-50%) `};*/
+  transform:${props=>props.flipped ? `rotateZ(${props.degRotate}deg) translateX(-50%) translateY(-50%) rotateY(180deg)` : `rotateZ(${props.degRotate}deg) translateX(-50%) translateY(-50%)` };*/
+`
+/*
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  */
+/*transform:${props=>props.flipped ? `rotateX(${props.degRotate}deg) translateX(-50%) translateY(50%) rotateY(180deg)` : `rotateX(${props.degRotate}deg) translateX(-50%) translateY(50%) ` };*/
+
+
+// common styles in both CardQuiz and CardReward
+export const Div_Card = styled.div
+`
+  /*
+  width: 300px;
+  height: 450px;
+  */
+  
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   
-  position: relative;
   
   background-color: ${
     props => {
@@ -30,9 +66,9 @@ export const Div_Card = styled.div
       else {
         return (`
           hsl(
-            ${props.theme.getIn(['colorAssignment', 'basic', '10', 0])}, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '10', 1])}%, 
-            ${props.theme.getIn(['colorAssignment', 'basic', '10', 2])}%
+            ${props.theme.getIn(['colorAssignment', 'basic', 'white', 0])}, 
+            ${props.theme.getIn(['colorAssignment', 'basic', 'white', 1])}%, 
+            ${props.theme.getIn(['colorAssignment', 'basic', 'white', 2])}%
           )
         `)
       }
@@ -65,18 +101,13 @@ export const Div_Card = styled.div
   };
   
   
-  
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
-  z-index: ${props=>props.indexZ};
-  
-  top: 50%;
-  left: 50%;
-  transform: rotate(${props=>props.degRotate}deg) translateX(-50%) translateY(-50%) ;
   
 	@media (min-width:  ${props => props.theme.getIn(['media', 'sm_md']) }px) {
 	 
 	}
-  
-  
 `;
+
 

@@ -24,7 +24,8 @@ import {
 
 function CardQuiz({
   card,  // 이것도 Immutable Map
-  index
+  index,
+  showing
 }) {
   
   const indexCardFocused = useSelector( state => state.card.getIn(['indexCardFocused']), [] );
@@ -44,20 +45,11 @@ function CardQuiz({
     }
   },[])
   
-  
+  /*
   const indexZ = useMemo(()=>{
     return (200-index)
   }, [index]);
-  
-  const degRotate = useMemo(()=>{
-    if (index===0){
-      return 0;
-    }
-    else {
-      return ((Math.random() -0.5) * 10);
-    }
-  }, [index]);
-  
+  */
   
   
   const objColor = useMemo(()=>{
@@ -112,7 +104,7 @@ function CardQuiz({
   
   return (
     
-    <Div_CardQuiz index={index} indexZ={indexZ} degRotate={degRotate}>
+    <Div_CardQuiz index={index}  >
     
       <Div_CardQuiz_TopLeft {...objColor}>
         <div> 

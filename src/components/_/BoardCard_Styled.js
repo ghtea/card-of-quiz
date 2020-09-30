@@ -20,3 +20,4 @@ export const Div_BoardCard = styled.div
   
   
 `;
+

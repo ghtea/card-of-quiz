@@ -57,7 +57,7 @@ function Home({
     
     <Div_Home>
       <div>
-        Hello Jia
+        
       </div>
     </Div_Home>
     

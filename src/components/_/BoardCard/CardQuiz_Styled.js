@@ -5,6 +5,8 @@ import {Div_Card} from './Card_Styled';
 
 export const Div_CardQuiz = styled(Div_Card)
 `
+  
+  
   box-shadow:  ${
     props => {
       if (props.index === 0) {

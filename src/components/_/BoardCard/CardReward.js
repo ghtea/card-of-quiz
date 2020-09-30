@@ -22,7 +22,8 @@ import {
 
 function CardReward({
   card,  // 이것도 Immutable Map
-  index
+  index,
+  showing
 }) {
   
   //const basic = useSelector( state => state.color.getIn(['basic']), [] );
@@ -35,19 +36,13 @@ function CardReward({
     
   }, [])
   
-  
+  /*
   const indexZ = useMemo(()=>{
     return (200-index)
   }, [index]);
+  */
   
-  const degRotate = useMemo(()=>{
-    if (index===0){
-      return 0;
-    }
-    else {
-      return ((Math.random() -0.5) * 10);
-    }
-  }, [index]);
+  
   
   
   
@@ -106,7 +101,7 @@ function CardReward({
   
   return (
     
-    <Div_CardReward index={index} indexZ={indexZ} degRotate={degRotate}>
+    <Div_CardReward index={index}  >
     
       <Div_CardReward_TopLeft {...objColor}>
         <div> 
@@ -130,6 +125,7 @@ function CardReward({
       <Div_CardReward_Reward>
         {returnReward()}
       </Div_CardReward_Reward>
+      
       
       
     

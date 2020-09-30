@@ -11,7 +11,9 @@ import * as config from '../../config';
 
 import CardQuiz from './BoardCard/CardQuiz';
 import CardReward from './BoardCard/CardReward';
-import {Div_BoardCard} from './BoardCard_Styled'
+import {Div_BoardCard} from './BoardCard_Styled';
+import {Div_CardFrame} from './BoardCard/Card_Styled';
+
 
 function BoardCard({
   
@@ -43,6 +45,7 @@ function BoardCard({
   useEffect(()=>{
     
   }, [])
+  
   /*
   const colorTextHsl = useMemo(()=>{
    
@@ -71,24 +74,41 @@ function BoardCard({
           //console.log(listCard.toJS())
           const card = fromJS(objCard);
           const showingReward = card.getIn(['reward', 'showing']);
-          if (!showingReward) {
-            return (
+          
+          let degRotate = 0;
+          if (index===0){
+            degRotate = 0;
+          }
+          else {
+            degRotate = ((Math.random() -0.5) * 10);
+          }
+          
+          
+          return (
+            // https://codepen.io/desandro/pen/LmWoWe    working on animation
+            <Div_CardFrame 
+              flipped={showingReward}
+              indexZ={200-index}
+              degRotate={degRotate}
+              
+              key={`card-frame-index${index}`}
+            >
               <CardQuiz
                 card={card}
                 index={index}
                 key={`card-quiz-index${index}`}
+                showing={!showingReward}
+                
               />
-            )
-          }
-          else {
-            return (
               <CardReward
                 card={card}
                 index={index}
                 key={`card-reward-index${index}`}
+                showing={showingReward}
+                
               />
-            )
-          }
+            </Div_CardFrame>
+          )
         } )}
           
         

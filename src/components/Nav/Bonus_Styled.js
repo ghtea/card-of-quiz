@@ -9,9 +9,9 @@ export const Div_Bonus = styled.div`
   
   color: ${
     props => `hsl(
-      ${props.theme.getIn(['colorAssignment', 'basic', '20', 0])}, 
-      ${props.theme.getIn(['colorAssignment', 'basic', '20', 1])}%, 
-      ${props.theme.getIn(['colorAssignment', 'basic', '20', 2])}%)
+      ${props.theme.getIn(['colorAssignment', 'basic', '10', 0])}, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '10', 1])}%, 
+      ${props.theme.getIn(['colorAssignment', 'basic', '10', 2])}%)
     `
   };
   
