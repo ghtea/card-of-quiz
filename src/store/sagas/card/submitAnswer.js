@@ -33,29 +33,25 @@ function* submitAnswer(action) {
         const indexCardFocused = action['payload']['indexCardFocused'];
         const valueTrying = action['payload']['valueTrying'];
         
-        const answer =  yield select( (state) => state.card.getIn(['listCard', indexCardFocused, 'answer']) ); 
+        const answer =  yield select( (state) => state.card.getIn(['listCard', indexCardFocused, 'quiz', 'answer']) ); 
         
         const kindAnswer = answer.getIn(['kind']);
-        const valueCorrect = answer.getIn([kindAnswer,'valueCorrect']);
+        const valueCorrect = answer.getIn([kindAnswer,'content']);
         
         if (valueTrying === valueCorrect){
             
             console.log('answer is correct!')
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardFocused, 'solved'],
+                location: ['listCard', indexCardFocused, 'status', 'solved'],
                 replacement: true
             }) );
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardFocused, 'reward', 'showing'],
+                location: ['listCard', indexCardFocused, 'status', 'reward', 'showing'],
                 replacement: true
             }) );
             
-            yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardFocused, 'solved'],
-                replacement: true
-            }) );
             
         }
         else {
@@ -63,17 +59,12 @@ function* submitAnswer(action) {
             console.log('answer is wrong')
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardFocused, 'solved'],
+                location: ['listCard', indexCardFocused, 'status', 'solved'],
                 replacement: false
             }) );
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardFocused, 'reward', 'showing'],
-                replacement: false
-            }) );
-            
-            yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardFocused, 'solved'],
+                location: ['listCard', indexCardFocused, 'status', 'reward', 'showing'],
                 replacement: false
             }) );
             

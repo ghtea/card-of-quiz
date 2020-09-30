@@ -10,7 +10,7 @@ import * as actionsCard from "../../actions/card";
 
 
 
-const getListCardQuiz_request = () => {
+const getListQuiz_request = () => {
     
     let queryRequestBefore = {
         filterAuthor: 'Jeyon',
@@ -20,39 +20,41 @@ const getListCardQuiz_request = () => {
       
     const queryRequest = queryString.stringify(queryRequestBefore);
           
-    return axios.get(`${config.URL_BACK}/cardQuiz/?` + queryRequest);
+    return axios.get(`${config.URL_BACK}/quiz/?` + queryRequest);
 };
 
 
-function* getListCardQuiz() {
+function* getListQuiz() {
     try {
         
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardQuiz'],
+                location: ['ready', 'listQuiz'],
                 replacement: false
             }) );
             
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardQuiz'],
+                location: ['loading', 'listQuiz'],
                 replacement: true
             }) );
         
         const { data } = yield call( getListCardQuiz_request );
-        console.log(data);
+        //console.log(data);
         
         // main
         yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCard'],
+            location: ['listQuiz'],
             replacement: data
         }) );
+        
+        yield put( actionsCard.return_BUILD_LIST_CARD() );
 
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardQuiz'],
+                location: ['loading', 'listQuiz'],
                 replacement: false
             }) );
             
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardQuiz'],
+                location: ['ready', 'listQuiz'],
                 replacement: true
             }) );
         
@@ -60,17 +62,17 @@ function* getListCardQuiz() {
     } catch (error) {
         
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['loading', 'listCardQuiz'],
+                location: ['loading', 'listQuiz'],
                 replacement: false
             }) );
             
             yield put( actionsBasic.return_REPLACE_BASIC({
-                location: ['ready', 'listCardQuiz'],
+                location: ['ready', 'listQuiz'],
                 replacement: false
             }) );
             
         console.log(error);
-        console.log('GET_LIST_CARD_QUIZ has been failed');
+        console.log('GET_LIST_QUIZ has been failed');
         //yield put( korean.return_GET_LIST_COLOR_Assignment_FAILURE() )
     }
 }

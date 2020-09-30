@@ -25,21 +25,21 @@ function* matchReward(action) {
     const indexCardMatching = action.payload.indexCardMatching;
     
         yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCard', indexCardMatching, 'reward', 'ready'],
+            location: ['listCard', indexCardMatching, 'status', 'reward', 'ready'],
             replacement: false
         }) );
         
         yield put( actionsCard.return_REPLACE_CARD({
-            location: ['listCard', indexCardMatching, 'reward', 'loading'],
+            location: ['listCard', indexCardMatching, 'status', 'reward', 'loading'],
             replacement: true
         }) );
     
     
-    const reward =  yield select( (state) => state.card.getIn(['listCard', indexCardMatching, 'reward']) ); 
+    const tagsReward =  yield select( (state) => state.card.getIn(['listCard', indexCardMatching, 'tagsReward']) ); 
     
     const objQuery = {
         filterKind: 'gif',
-        filterTags: JSON.stringify(reward.getIn(['appointed']))
+        filterTags: JSON.stringify(tagsReward)
     };
     
     try {
@@ -51,7 +51,7 @@ function* matchReward(action) {
         // main
         yield put( actionsCard.return_REPLACE_CARD({
             location: ['listCard', indexCardMatching, 'reward'],
-            replacement: {...reward.toJS(), ...rewardRandom['reward']}
+            replacement: rewardRandom
         }) );
         
         
@@ -60,12 +60,12 @@ function* matchReward(action) {
             
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardMatching, 'reward', 'loading'],
+                location: ['listCard', indexCardMatching, 'status', 'reward', 'loading'],
                 replacement: false
             }) );
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardMatching, 'reward', 'ready'],
+                location: ['listCard', indexCardMatching, 'status', 'reward', 'ready'],
                 replacement: true
             }) );
         
@@ -73,12 +73,12 @@ function* matchReward(action) {
     } catch (error) {
         
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardMatching, 'reward', 'loading'],
+                location: ['listCard', indexCardMatching, 'status', 'reward', 'loading'],
                 replacement: false
             }) );
             
             yield put( actionsCard.return_REPLACE_CARD({
-                location: ['listCard', indexCardMatching, 'reward', 'ready'],
+                location: ['listCard', indexCardMatching, 'status', 'reward', 'ready'],
                 replacement: false
             }) );
             

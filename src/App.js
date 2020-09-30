@@ -45,7 +45,7 @@ function App({
   const dispatch = useDispatch();
   
   useEffect(()=>{
-    dispatch( actionsCard.return_GET_LIST_CARD_QUIZ() );
+    dispatch( actionsCard.return_GET_LIST_QUIZ() );
   }, [])
   
   return (

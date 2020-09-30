@@ -10,7 +10,7 @@ import * as card from '../actions/card';
 
 
 const stateInitial = fromJS({
-  
+  listQuiz: [],
   listCard: [], // list of Card (Quiz + Reward)
   
   indexCardFocused: 0

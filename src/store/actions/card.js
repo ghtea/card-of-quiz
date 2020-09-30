@@ -10,22 +10,22 @@ export const return_REPLACE_CARD = (payload) => {
 
 
 //
-export const GET_LIST_CARD_QUIZ = 'GET_LIST_CARD_QUIZ';
-export const return_GET_LIST_CARD_QUIZ = (payload) => {
+export const GET_LIST_QUIZ = 'GET_LIST_QUIZ';
+export const return_GET_LIST_QUIZ = (payload) => {
     return {
-        type: GET_LIST_CARD_QUIZ,
+        type: GET_LIST_QUIZ,
         payload: payload
     }
 };
 
-export const CHANGE_CARD_FOCUSED = 'CHANGE_CARD_FOCUSED';
-
-export const return_CHANGE_CARD_FOCUSED = (payload) => {
+export const GET_BUILD_LIST_CARD = 'GET_BUILD_LIST_CARD';
+export const return_GET_BUILD_LIST_CARD = (payload) => {
     return {
-        type: CHANGE_CARD_FOCUSED,
+        type: GET_BUILD_LIST_CARD,
         payload: payload
     }
 };
+
 
 export const MATCH_REWARD = 'MATCH_REWARD';
 export const return_MATCH_REWARD = (payload) => {
@@ -35,6 +35,16 @@ export const return_MATCH_REWARD = (payload) => {
     }
 };
 
+
+
+
+export const CHANGE_CARD_FOCUSED = 'CHANGE_CARD_FOCUSED';
+export const return_CHANGE_CARD_FOCUSED = (payload) => {
+    return {
+        type: CHANGE_CARD_FOCUSED,
+        payload: payload
+    }
+};
 
 
 export const SUBMIT_ANSWER = 'SUBMIT_ANSWER';

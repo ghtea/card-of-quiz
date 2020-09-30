@@ -20,17 +20,20 @@ function BoardCard({
 }) {
   
   const listCard = useSelector( state => state.card.getIn(['listCard']), [] );
-  const loadingListCardQuiz = useSelector( state => state.basic.getIn(['loading', 'listCardQuiz']), [] );
-  const readyListCardQuiz = useSelector( state => state.basic.getIn(['ready', 'listCardQuiz']), [] );
+  
+  const lengthListCard = useMemo( ()=> listCard.size , [listCard] );
+  const listCardZero = useMemo( ()=> Array(lengthListCard).fill(0) , [listCard, lengthListCard] );
+  
+  
+  const loadingListQuiz = useSelector( state => state.basic.getIn(['loading', 'listQuiz']), [] );
+  const readyListQuiz = useSelector( state => state.basic.getIn(['ready', 'listQuiz']), [] );
+  
+  const readyListCard = useSelector( state => state.basic.getIn(['ready', 'listCard']), [] );
   //console.log(listCard.toJS())
   
   const indexCardFocused = useSelector( state => state.card.getIn(['indexCardFocused']), [] );
   
   /*
-  const cardFront = useMemo(()=>{
-    return listCard.getIn([0])
-  }, [listCard]);
-  
   const listCardOthers = useMemo(()=>{
     const result = listCard.shift()
     return result;
@@ -47,12 +50,6 @@ function BoardCard({
   }, [])
   
   /*
-  const colorTextHsl = useMemo(()=>{
-   
-    return `dd`
-  }, []);
-  
-  
   const onClick_ChangeRole = useCallback(
     
     (event, roleNew) => {
@@ -68,48 +65,19 @@ function BoardCard({
     <Div_BoardCard>
       
       <div>
-        {loadingListCardQuiz && <div> loading </div>}  
+      
+        {loadingListQuiz && <div> loading listQuiz </div>}  
         
-        {readyListCardQuiz && listCard.toJS().map( (objCard, index) => {
-          //console.log(listCard.toJS())
-          const card = fromJS(objCard);
-          const showingReward = card.getIn(['reward', 'showing']);
-          
-          let degRotate = 0;
-          if (index===0){
-            degRotate = 0;
-          }
-          else {
-            degRotate = ((Math.random() -0.5) * 10);
-          }
+        {readyListQuiz && !readyListCard && <div> listQuiz ready, listCard un-ready </div>}  
+        
+        
+        {readyListCard && listCardZero.map( (element, index) =>  (
+          <Card 
+            card={listCard.getIn([index])}
+          /> 
+        ) )}
           
           
-          return (
-            // https://codepen.io/desandro/pen/LmWoWe    working on animation
-            <Div_CardFrame 
-              flipped={showingReward}
-              indexZ={200-index}
-              degRotate={degRotate}
-              
-              key={`card-frame-index${index}`}
-            >
-              <CardQuiz
-                card={card}
-                index={index}
-                key={`card-quiz-index${index}`}
-                showing={!showingReward}
-                
-              />
-              <CardReward
-                card={card}
-                index={index}
-                key={`card-reward-index${index}`}
-                showing={showingReward}
-                
-              />
-            </Div_CardFrame>
-          )
-        } )}
           
         
       </div>
