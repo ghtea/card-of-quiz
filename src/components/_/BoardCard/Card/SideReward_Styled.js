@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import Immutable from 'immutable';
 
-import {Div_Card} from './Card_Styled';
+import {Div_Side} from './Side_Styled';
 
-export const Div_CardQuiz = styled(Div_Card)
+export const Div_SideReward = styled(Div_Side)
 `
-  
+  transform: rotateY(180deg);
   
   box-shadow:  ${
     props => {
@@ -34,8 +34,39 @@ export const Div_CardQuiz = styled(Div_Card)
   
 `;
 
+/*
+export const Div_SideReward_Top = styled.div`
+  height: 30px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  font-size: 1.2rem;
+  
+  & > div {
+    width: auto;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+    & > div { 
+      width: auto; 
+    }
+  }
+  
+`*/
 
-const Div_CardQuiz_Corner = styled.div`
+
+
+
+
+
+
+const Div_SideReward_Corner = styled.div`
   position: absolute;
   width: auto;
   height: 30px;
@@ -50,13 +81,13 @@ const Div_CardQuiz_Corner = styled.div`
   }
 `
 
-export const Div_CardQuiz_TopLeft = styled(Div_CardQuiz_Corner)`
+export const Div_SideReward_TopLeft = styled(Div_SideReward_Corner)`
   font-size: 1.2rem;
   left: 10px;
   top: 10px;
 `
 
-export const Div_CardQuiz_TopRight = styled(Div_CardQuiz_Corner)`
+export const Div_SideReward_TopRight = styled(Div_SideReward_Corner)`
   font-size: 1.2rem;
   right: 10px;
   top: 10px;
@@ -72,7 +103,7 @@ export const Div_CardQuiz_TopRight = styled(Div_CardQuiz_Corner)`
   }
 `
 
-export const Div_CardQuiz_BottomLeft = styled(Div_CardQuiz_Corner)`
+export const Div_SideReward_BottomLeft = styled(Div_SideReward_Corner)`
   font-size: 1.2rem;
   left: 10px;
   bottom: 10px;
@@ -88,7 +119,7 @@ export const Div_CardQuiz_BottomLeft = styled(Div_CardQuiz_Corner)`
   }
 `
 
-export const Div_CardQuiz_BottomRight = styled(Div_CardQuiz_Corner)`
+export const Div_SideReward_BottomRight = styled(Div_SideReward_Corner)`
   font-size: 1.2rem;
   right: 10px;
   bottom: 10px;
@@ -96,7 +127,7 @@ export const Div_CardQuiz_BottomRight = styled(Div_CardQuiz_Corner)`
 
 
 
-export const Div_CardQuiz_CornerNumber = styled.div`
+export const Div_SideReward_CornerNumber = styled.div`
   width: auto;
   padding-left: 5px;
   padding-right: 5px;
@@ -105,7 +136,7 @@ export const Div_CardQuiz_CornerNumber = styled.div`
 `
 
 
-export const Button_SubmitAnswer = styled.button`
+export const Button_BackToQuiz = styled.button`
   border-radius: 12px;
   background-color: ${props=>` 
     hsl(
@@ -126,29 +157,17 @@ export const Button_SubmitAnswer = styled.button`
 
 
 
-export const Div_CardQuiz_Quiz = styled.div`
+export const Div_SideReward_Reward = styled.div`
   width: 260px;
+  height: 330px; /* 450 - 60 - 60  */
   margin-top: 60px;
   
-  & > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
-  & > div:nth-child(n+2){
-    margin-top: 20px;
-  }
-  
-  & > div:nth-child(1){ /* instruction */
-    height: auto;
-    min-height: 40px;
-  }
+  /*background-color: red;*/
 `
 
 
-export const Div_CardQuiz_Answer = styled.div`
-  width: 260px;
-  margin-bottom: 60px;
-`

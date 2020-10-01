@@ -6,9 +6,9 @@ import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
-import * as actionsCard from "../../../../store/actions/card";
+import * as actionsCard from "../../../../../store/actions/card";
 
-import * as config from '../../../../config';
+import * as config from '../../../../../config';
 
 import { 
   Div_AnswerText
@@ -16,7 +16,7 @@ import {
 
 
 function AnswerText({
-  answer // 이것도 Immutable Map
+  card // 이것도 Immutable Map
 }) {
   
 
@@ -43,18 +43,21 @@ function AnswerText({
   */
   
   const indexCardFocused = useSelector( state => state.card.getIn(['indexCardFocused']), [] );
+  const valueTrying = useSelector( state => state.card.getIn(['listCard', indexCardFocused, 'status', 'answer', 'text']), [] );
   
-  const valueTrying = useSelector( state => state.card.getIn(['listCard', indexCardFocused, 'answer', 'text', 'valueTrying']), [] );
-  const placeholder = useSelector( state => state.card.getIn(['listCard', indexCardFocused, 'answer', 'text', 'placeholder']), [] );
+  const hint = useMemo(()=>{
+    return card.getIn(['quiz', 'answer', 'text', 'hint']);
+  }, [card]);
+  
   
   const onChange_InputValueTrying = useCallback(
     (event) => {
       dispatch( actionsCard.return_REPLACE_CARD({
-          location: ['listCard', indexCardFocused, 'answer', 'text', 'valueTrying'],
+          location: ['listCard', indexCardFocused, 'status', 'answer', 'text'],
           replacement: event.target.value
         }) )
     },
-    []
+    [indexCardFocused]
   );
   
   
@@ -63,10 +66,10 @@ function AnswerText({
     
     <Div_AnswerText>
       <div> 
-        {answer.getIn(['text', 'placeholder'])}
+        {hint}
       </div>
       <div>
-        <input type='text' value={valueTrying} onChange={onChange_InputValueTrying} placeholder={placeholder}/>
+        <input type='text' value={valueTrying} onChange={onChange_InputValueTrying} placeholder={hint}/>
       </div>
     </Div_AnswerText>
     

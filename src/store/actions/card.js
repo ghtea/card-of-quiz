@@ -18,10 +18,10 @@ export const return_GET_LIST_QUIZ = (payload) => {
     }
 };
 
-export const GET_BUILD_LIST_CARD = 'GET_BUILD_LIST_CARD';
-export const return_GET_BUILD_LIST_CARD = (payload) => {
+export const BUILD_LIST_CARD = 'BUILD_LIST_CARD';
+export const return_BUILD_LIST_CARD = (payload) => {
     return {
-        type: GET_BUILD_LIST_CARD,
+        type: BUILD_LIST_CARD,
         payload: payload
     }
 };

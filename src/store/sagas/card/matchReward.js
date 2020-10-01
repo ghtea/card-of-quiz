@@ -2,6 +2,9 @@ import { call, spawn, put, takeEvery, select } from "redux-saga/effects";
 import axios from "axios";
 import queryString from 'query-string';
 
+import Immutable, {toJS} from 'immutable';
+
+
 import * as config from '../../../config';
 
 import * as actionsBasic from "../../actions/basic";
@@ -35,16 +38,21 @@ function* matchReward(action) {
         }) );
     
     
-    const tagsReward =  yield select( (state) => state.card.getIn(['listCard', indexCardMatching, 'tagsReward']) ); 
+    const tagsReward =  yield select( (state) => state.card.getIn(['listCard', indexCardMatching, 'quiz', 'tagsReward']) ); 
+    
     
     const objQuery = {
         filterKind: 'gif',
-        filterTags: JSON.stringify(tagsReward)
+        filterTags: JSON.stringify(tagsReward.toJS())
     };
+    
+    //console.log('objQuery')
+    //console.log(objQuery)
     
     try {
         const { data } = yield call( getListReward_request, objQuery );
             //console.log(data);
+            //console.log('data');
         // data 는 listReward
         const rewardRandom = data[Math.floor(Math.random()*data.length)];
         

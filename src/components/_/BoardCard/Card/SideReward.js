@@ -6,21 +6,21 @@ import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
-import * as actionsCard from "../../../store/actions/card";
+import * as actionsCard from "../../../../store/actions/card";
 
-import * as config from '../../../config';
+import * as config from '../../../../config';
 
-import RewardGif from './CardReward/RewardGif';
+import RewardGif from './SideReward/RewardGif';
 
-import IconHeart from '../../../svgs/symbol/IconHeart';
+import IconHeart from '../../../../svgs/symbol/IconHeart';
 import { 
-  Div_CardReward, 
-  Div_CardReward_TopLeft, Div_CardReward_TopRight, Div_CardReward_BottomLeft, Div_CardReward_BottomRight, 
-  Div_CardReward_CornerNumber, Button_BackToQuiz,
-  Div_CardReward_Reward
-} from './CardReward_Styled'
+  Div_SideReward, 
+  Div_SideReward_TopLeft, Div_SideReward_TopRight, Div_SideReward_BottomLeft, Div_SideReward_BottomRight, 
+  Div_SideReward_CornerNumber, Button_BackToQuiz,
+  Div_SideReward_Reward
+} from './SideReward_Styled'
 
-function CardReward({
+function SideReward({
   card,  // 이것도 Immutable Map
   index,
   showing
@@ -75,8 +75,8 @@ function CardReward({
     () => {
       const kind = card.getIn(['reward', 'kind']);  // 헷갈림 주의]
       
-      console.log('kind');
-      console.log(kind);
+      //console.log('kind');
+      //console.log(kind);
       
       if (kind ==='gif'){
         return (
@@ -91,7 +91,7 @@ function CardReward({
     (event) => {
       dispatch(
         actionsCard.return_REPLACE_CARD({
-          location: ['listCard', index, 'reward', 'showing'],
+          location: ['listCard', index, 'status', 'reward', 'showing'],
           replacement: false
         })
       );
@@ -101,35 +101,35 @@ function CardReward({
   
   return (
     
-    <Div_CardReward index={index}  >
+    <Div_SideReward index={index} >
     
-      <Div_CardReward_TopLeft {...objColor}>
+      <Div_SideReward_TopLeft {...objColor}>
         <div> 
           Reward
         </div>
-      </Div_CardReward_TopLeft>
+      </Div_SideReward_TopLeft>
       
-      <Div_CardReward_TopRight {...objColor}> 
+      <Div_SideReward_TopRight {...objColor}> 
         <div> {returnIconSymbol(card.getIn(['symbol']))} </div>
-      </Div_CardReward_TopRight>
+      </Div_SideReward_TopRight>
       
-      <Div_CardReward_BottomLeft {...objColor}>
+      <Div_SideReward_BottomLeft {...objColor}>
         <div> {returnIconSymbol(card.getIn(['symbol']))} </div>
-      </Div_CardReward_BottomLeft>
+      </Div_SideReward_BottomLeft>
       
-      <Div_CardReward_BottomRight {...objColor}> 
-        <div> <Button_BackToQuiz onClick={onClick_BackToQuiz}> Quiz </Button_BackToQuiz>  </div>
-      </Div_CardReward_BottomRight>
+      <Div_SideReward_BottomRight {...objColor}> 
+        <div> <Button_BackToQuiz onClick={onClick_BackToQuiz}> Explanation </Button_BackToQuiz>  </div>
+      </Div_SideReward_BottomRight>
         
 
-      <Div_CardReward_Reward>
+      <Div_SideReward_Reward>
         {returnReward()}
-      </Div_CardReward_Reward>
+      </Div_SideReward_Reward>
       
       
       
     
-    </Div_CardReward>
+    </Div_SideReward>
     
   )
 }
@@ -137,4 +137,4 @@ function CardReward({
 
 
 
-export default CardReward;
+export default SideReward;

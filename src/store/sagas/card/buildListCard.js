@@ -35,6 +35,8 @@ function* buildListCard(action) {
         }; // objCard
         listCardTemp.push(objCard);
     }
+    console.log('here')
+    console.log(listCardTemp);
     
     yield put( actionsCard.return_REPLACE_CARD({
         location: ['listCard'],

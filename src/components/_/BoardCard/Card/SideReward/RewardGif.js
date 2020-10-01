@@ -6,9 +6,9 @@ import axios from 'axios';
 
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
-import * as actionsCard from "../../../../store/actions/card";
+import * as actionsCard from "../../../../../store/actions/card";
 
-import * as config from '../../../../config';
+import * as config from '../../../../../config';
 
 import { 
   Div_RewardGif, Img_RewardGif
@@ -41,23 +41,6 @@ function RewardGif({
           replacement: Math.round(event.target.value)
         }) )
   */
-  
-  const indexCardFocused = useSelector( state => state.card.getIn(['indexCardFocused']), [] );
-  
-  const valueTrying = useSelector( state => state.card.getIn(['listCard', indexCardFocused, 'answer', 'text', 'valueTrying']), [] );
-  const placeholder = useSelector( state => state.card.getIn(['listCard', indexCardFocused, 'answer', 'text', 'placeholder']), [] );
-  
-  const onChange_InputValueTrying = useCallback(
-    (event) => {
-      dispatch( actionsCard.return_REPLACE_CARD({
-          location: ['listCard', indexCardFocused, 'answer', 'text', 'valueTrying'],
-          replacement: event.target.value
-        }) )
-    },
-    []
-  );
-  
-  
   
   return (
     

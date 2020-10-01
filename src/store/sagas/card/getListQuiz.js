@@ -37,7 +37,7 @@ function* getListQuiz() {
                 replacement: true
             }) );
         
-        const { data } = yield call( getListCardQuiz_request );
+        const { data } = yield call( getListQuiz_request );
         //console.log(data);
         
         // main
@@ -77,7 +77,7 @@ function* getListQuiz() {
     }
 }
 
-export default getListCardQuiz;
+export default getListQuiz;
 
 
 /*

@@ -7,12 +7,15 @@ import axios from 'axios';
 import {useSelector, useDispatch} from "react-redux";
 import Immutable, {toJS, fromJS} from 'immutable';
 
+import * as actionsCard from "../../store/actions/card";
+
 import * as config from '../../config';
 
-import CardQuiz from './BoardCard/CardQuiz';
-import CardReward from './BoardCard/CardReward';
-import {Div_BoardCard} from './BoardCard_Styled';
-import {Div_CardFrame} from './BoardCard/Card_Styled';
+import Card from './BoardCard/Card';
+import {
+  Div_BoardCard,
+  Div_Before, Div_Next
+} from './BoardCard_Styled';
 
 
 function BoardCard({
@@ -23,7 +26,7 @@ function BoardCard({
   
   const lengthListCard = useMemo( ()=> listCard.size , [listCard] );
   const listCardZero = useMemo( ()=> Array(lengthListCard).fill(0) , [listCard, lengthListCard] );
-  
+  console.log(listCard.toJS())
   
   const loadingListQuiz = useSelector( state => state.basic.getIn(['loading', 'listQuiz']), [] );
   const readyListQuiz = useSelector( state => state.basic.getIn(['ready', 'listQuiz']), [] );
@@ -49,15 +52,17 @@ function BoardCard({
     
   }, [])
   
-  /*
-  const onClick_ChangeRole = useCallback(
-    
-    (event, roleNew) => {
-      setRoleModifying(roleNew);
+  
+  const onClick_Move = useCallback(
+    (event, movement, indexCardNew) => {
+      dispatch(actionsCard.return_CHANGE_CARD_FOCUSED({
+        movement, 
+        indexCardNew
+      }));
     },
     []
   );
-  */
+  
   
   
   return (
@@ -71,16 +76,22 @@ function BoardCard({
         {readyListQuiz && !readyListCard && <div> listQuiz ready, listCard un-ready </div>}  
         
         
-        {readyListCard && listCardZero.map( (element, index) =>  (
-          <Card 
-            card={listCard.getIn([index])}
-          /> 
-        ) )}
+        {readyListCard && listCardZero.map( (element, index) =>  {
+          if (index >= indexCardFocused) {
+            return (
+              <Card 
+                card={listCard.getIn([index])}
+                index={index}
+                key={`card-${index}`}
+              />
+            )
+          }
+        } )}
           
-          
-          
-        
       </div>
+      
+      <Div_Before> <button onClick={(event)=>onClick_Move(event, 'before', undefined)}> {`<`} </button> </Div_Before>
+      <Div_Next> <button onClick={(event)=>onClick_Move(event, 'next', undefined)}> {`>`} </button> </Div_Next>
       
     </Div_BoardCard>
     
