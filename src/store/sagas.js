@@ -1,11 +1,12 @@
 import { all, fork } from 'redux-saga/effects'
 
 import cardSaga from './sagas/card';
-
+import authSaga from './sagas/auth';
 
 export default function* rootSaga() {
   yield all ([
-    fork(cardSaga)
+    fork(cardSaga),
+    fork(authSaga)
   ])
   // code after fork-effect
 }

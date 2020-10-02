@@ -19,6 +19,7 @@ import * as config from './config';
 
 //import Loading from "./components/_/Loading";
 import Home from "./routes/Home";
+import Auth from "./routes/Auth";
 import Nav from "./routes/Nav";
 import Korean from "./routes/Korean";
 
@@ -69,6 +70,7 @@ function App({
         <Switch >
           
           <Route path="/" exact={true} component={Home} />
+          <Route path="/Auth" component={Auth} />
           <Route path="/korean" component={Korean} />
           
         </Switch >

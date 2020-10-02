@@ -178,7 +178,7 @@ function SideQuiz({
           </div>
           <div> 
             {listLink.map((element, index)=>(
-              <div key={`link-${index}`}> <a href={element}> {`Link ${index+1}`} </a> </div>
+              <div key={`link-${index}`}> <a href={element} target="_blank"> {`Link ${index+1}`} </a> </div>
             ))} 
           </div>
         </Div_SideQuiz_Explanation>
