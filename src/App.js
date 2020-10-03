@@ -24,6 +24,7 @@ import Nav from "./routes/Nav";
 import Korean from "./routes/Korean";
 
 //import addDeleteNotification from "./redux/thunks/addDeleteNotification";
+import * as actionsAuth from "./store/actions/auth";
 import * as actionsCard from "./store/actions/card";
 //import {replaceDataAuth, replaceData2Auth} from "./redux/actions/auth";
 
@@ -48,6 +49,13 @@ function App({
   useEffect(()=>{
     dispatch( actionsCard.return_GET_LIST_QUIZ() );
   }, [])
+  
+  
+  
+  useEffect(()=>{
+    dispatch( actionsAuth.return_CHECK_LOGGED_IN() );
+  }, [])
+  
   
   return (
     <>

@@ -5,6 +5,8 @@ import axios from 'axios';
 import {useSelector, useDispatch} from "react-redux";
 import Immutable from 'immutable';
 
+import * as config from '../../config';
+
 
 import { NavLink } from 'react-router-dom';
 
@@ -18,15 +20,20 @@ const Bonus = ({
 	
 	}) => {
 	
-	//const listColorScheme = useSelector( state => state.colorScheme.get('listColorScheme'), [] );
+	const readyUser = useSelector( state => state.basic.getIn(['ready', 'user']), [] );
+	const user = useSelector( state => state.auth.getIn(['user']), [] );
   //const dispatch = useDispatch();
 	
 	
 	return (
 	
   <Div_Bonus>
-  	
-  	<div> By Jeyon </div>
+  	{readyUser &&
+  		<div> {user.getIn(['_id'])} </div>
+  	}
+  	{!readyUser &&
+  		<div> <a href={`${config.URL_FRONT}/auth/log-in`} > Log In </a> </div>
+  	}
 		
 	</Div_Bonus>
 	

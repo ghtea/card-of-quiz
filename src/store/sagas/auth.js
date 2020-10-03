@@ -5,9 +5,14 @@ import * as config from '../../config';
 
 import * as actionsAuth from "../actions/auth";
 
+import logIn from './auth/logIn';
+import checkLoggedIn from './auth/checkLoggedIn';
 
 export default function* authSaga() {
-    //yield takeEvery( theme.ADJUST_NEW_PALETTE_TO_THEME, adjustNewPaletteToTheme );
+    
+    yield takeEvery( actionsAuth.LOG_IN, logIn );
+    
+    yield takeEvery( actionsAuth.CHECK_LOGGED_IN, checkLoggedIn );
     
 }
 

@@ -11,13 +11,14 @@ import * as basic from '../actions/basic';
 
 const stateInitial = fromJS({
   loading: {
-    listQuiz: false // 아직 match 가 된지는 모른다
-    
+    listQuiz: false, // 아직 match 가 된지는 모른다
+    user: false
     
   },
   ready: {
     listQuiz: false, 
-    listCard: false
+    listCard: false,
+    user: false
   }  
 });
 

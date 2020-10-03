@@ -15,6 +15,16 @@ export const Div_Bonus = styled.div`
     `
   };
   
+  & a {
+    color: ${
+      props => `hsl(
+        ${props.theme.getIn(['colorAssignment', 'basic', '10', 0])}, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '10', 1])}%, 
+        ${props.theme.getIn(['colorAssignment', 'basic', '10', 2])}%)
+      `
+    };
+  }
+  
 	display: flex;
   flex-direction: row;
   justify-content: center;
@@ -31,5 +41,7 @@ export const Div_Bonus = styled.div`
 		heigth: auto;
 		
 	}
+	
+	
 `
 

@@ -9,6 +9,7 @@ import Immutable from 'immutable';
 
 import * as config from '../config';
 
+import LogIn from "../components/Auth/LogIn";
 
 import {Div_Auth} from './Auth_Styled'
 

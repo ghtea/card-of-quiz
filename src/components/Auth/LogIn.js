@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback, useMemo} from 'react';
-import {  BrowserRouter, Route, Switch, useParams } from "react-router-dom";
+import {  BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 //import queryString from 'query-string';
@@ -8,6 +8,7 @@ import {useSelector, useDispatch} from "react-redux";
 import Immutable, {toJS, fromJS} from 'immutable';
 
 import * as actionsCard from "../../store/actions/card";
+import * as actionsAuth from "../../store/actions/auth";
 
 import * as config from '../../config';
 
@@ -15,7 +16,9 @@ import useInput from '../../tools/hooks/useInput';
 
 
 import {
-  Div_LogIn
+  Div_LogIn,
+  Div_Input,
+  Div_Button
 } from './LogIn_Styled';
 
 
@@ -23,7 +26,7 @@ function LogIn({
   
 }) {
   
-  //const listCard = useSelector( state => state.card.getIn(['listCard']), [] );
+  const readyUser = useSelector( state => state.basic.getIn(['ready', 'user']), [] );
   
   //const listCardZero = useMemo( ()=> Array(lengthListCard).fill(0) , [listCard, lengthListCard] );
   
@@ -33,46 +36,78 @@ function LogIn({
     return result;
   }, [listCard]);
   */
-  
+  const history = useHistory();
   const dispatch = useDispatch();
   
-  useEffect(()=>{
-    
-  }, [])
   
-  const inputEmailId = useInput(""); // {value, setValue, onChange};
+  const inputIdentification = useInput(""); // {value, setValue, onChange};
   const inputPassword = useInput(""); // {value, setValue, onChange};
   
-  /*
-  const onClick_Move = useCallback(
-    (event, movement, indexCardNew) => {
-      dispatch(actionsCard.return_CHANGE_CARD_FOCUSED({
-        movement, 
-        indexCardNew
-      }));
+  useEffect(()=>{
+    if (readyUser){
+      history.push(`/`)
+    }
+  },[readyUser])
+  
+  
+  const onClick_LogIn = useCallback(
+    (event) => {
+      if (!inputIdentification.value || !inputPassword.value) {
+        console.log('enter text')
+      }
+      else {
+        dispatch(actionsAuth.return_LOG_IN({
+          identification: inputIdentification.value,
+          password: inputPassword.value
+        }));
+      }
     },
-    []
+    [inputIdentification, inputPassword]
   );
-  */
+  
+  const onKeyPress_LogIn = useCallback(
+    (event) => {
+      if (event.key === "Enter") {
+        onClick_LogIn(event);
+      }
+    },
+    [inputIdentification, inputPassword]
+  );
+  
   
   
   return (
     
     <Div_LogIn>
       
-      <div>
-        <div> Email of id </div>
-        <input {...inputEmailBattletag}  placeholder="email or id"  
+      <Div_Input>
+        <div> Email or ID </div>
+        <input 
+          value={inputIdentification.value}
+          onChange={inputIdentification.onChange}
+          
+          placeholder="email or id"  
           onKeyPress={onKeyPress_LogIn}
         />
-      </div>
+      </Div_Input>
       
-      <div>
+      <Div_Input>
         <div> Password  </div>
-        <input {...inputPassword}  placeholder="password" type="password" 
+        <input 
+          value={inputPassword.value}
+          onChange={inputPassword.onChange}
+          
+          placeholder="password" 
+          type="password" 
           onKeyPress={onKeyPress_LogIn}
         />
-      </div>
+      </Div_Input>
+      
+      <Div_Button>
+        <button onClick={onClick_LogIn} > 
+          Log In
+        </button>
+      </Div_Button>
       
     </Div_LogIn>
     

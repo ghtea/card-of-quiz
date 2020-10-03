@@ -211,7 +211,6 @@ const DivForgotPassword = styled(Div)`
     if (event.key === "Enter") {
       onClick_LogIn();
     }
-    
   }
   
   
