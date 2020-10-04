@@ -11,9 +11,9 @@ import * as actionsAuth from "../../actions/auth";
 
 
 
-const requestCheck = (bodyReq) => {
+const requestCheck = () => {
     
-    return axios.get(`${config.URL_BACK}/auth/check`,  bodyReq);
+    return axios.get(`${config.URL_BACK}/auth/check`,  { withCredentials: true,  credentials: 'include'} );
 };
 
 
@@ -60,12 +60,7 @@ function* checkLoggedIn() {
             
             console.log("logged user");
             
-            const bodyReq = {
-                withCredentials: true, 
-                credentials: 'include'
-            };
-            
-            const { data } = yield call( requestCheck, bodyReq );
+            const { data } = yield call( requestCheck );
             console.log(data);
     
             yield put( actionsAuth.return_REPLACE_AUTH({
@@ -89,7 +84,7 @@ function* checkLoggedIn() {
             console.log('failed check');
             Cookies.remove('logged', { path: '/' });
             
-            window.location.href = '/auth/log-in';
+            //window.location.href = '/auth/log-in';
             
                 yield put( actionsBasic.return_REPLACE_BASIC({
                     location: ['ready', 'user'],

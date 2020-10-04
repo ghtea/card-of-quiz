@@ -20,7 +20,7 @@ const requestLogIn = (bodyReq) => {
         password
     }
     */  
-    return axios.post(`${config.URL_BACK}/auth/log-in`, bodyReq);
+    return axios.post(`${config.URL_BACK}/auth/log-in`, bodyReq, {withCredentials: true, credentials: 'include'});
 };
 
 
